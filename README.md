@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2.svg?branch=master)](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![Build Status](https://circleci.com/gh/Tomas-L-Apal/Trabajo-Practico-2-Algo-3.svg?style=shield)](https://app.circleci.com/pipelines/github/Tomas-L-Apal/Trabajo-Practico-2-Algo-3)
+[![codecov](https://codecov.io/gh/Tomas-L-Apal/Trabajo-Practico-2-Algo-3/branch/master/graph/badge.svg?token=TE32YRFZVK)](https://codecov.io/gh/Tomas-L-Apal/Trabajo-Practico-2-Algo-3)
 
 
 
