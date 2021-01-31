@@ -1,5 +1,8 @@
 package edu.fiuba.algo3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface IPosicion {
     IPosicion obtenerDerecha();
 
@@ -12,4 +15,8 @@ public interface IPosicion {
     String color();
 
     void pintar(String color);
+
+    ArrayList<Integer> obtenerCoordenadas();
+
+    Boolean iguales(IPosicion otraPosicion);
 }

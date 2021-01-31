@@ -1,5 +1,8 @@
 package edu.fiuba.algo3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Posicion implements IPosicion {
     private int x;
     private int y;
@@ -38,5 +41,18 @@ public class Posicion implements IPosicion {
     @Override
     public void pintar(String color) {
         this.color = color;
+    }
+
+    @Override
+    public ArrayList<Integer> obtenerCoordenadas() {
+        ArrayList<Integer> coordenadas = new ArrayList<>();
+        coordenadas.add(this.x);
+        coordenadas.add(this.y);
+        return coordenadas;
+    }
+
+    @Override
+    public Boolean iguales(IPosicion otraPosicion) {
+        return this.obtenerCoordenadas().equals(otraPosicion.obtenerCoordenadas());
     }
 }

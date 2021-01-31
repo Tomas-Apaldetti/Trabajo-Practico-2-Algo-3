@@ -21,4 +21,9 @@ public class Personaje {
     public void apoyarLapiz() {
         this.lapiz = new LapizApoyado(this.color);
     }
+
+    public void levantarLapiz()
+    {
+        this.lapiz = new LapizLevantado();
+    }
 }
