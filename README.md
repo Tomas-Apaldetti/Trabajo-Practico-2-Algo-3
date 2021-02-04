@@ -6,6 +6,7 @@
 # TP2 Algoritmos 3: AlgoBlocks
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
+https://docs.google.com/document/d/1mVxDk4yDnr1ck9b-jBZ9ZcSXvRVdQCUoggX72gO6PSc/edit#heading=h.9u57u5a1640z
 
 ## Grupo N13
 
