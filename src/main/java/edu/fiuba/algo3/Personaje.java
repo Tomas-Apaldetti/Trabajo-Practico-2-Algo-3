@@ -1,29 +1,26 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.ILapiz;
-import edu.fiuba.algo3.IPosicion;
-import edu.fiuba.algo3.LapizLevantado;
-
 public class Personaje {
-    private IPosicion posicion = new Posicion(0,0);
-    private ILapiz lapiz = new LapizLevantado();
-    String color = "negro";
+    private Posicion posicion = new Posicion(0,0);
 
-    public IPosicion posicionActual() {
+
+    public void moverDerecha() {
+        this.posicion = this.posicion.posicionDerecha();
+    }
+
+    public void moverIzquierda() {
+        this.posicion = this.posicion.posicionIzquierda();
+    }
+
+    public void moverAbajo() {
+        this.posicion = this.posicion.posicionAbajo();
+    }
+
+    public void moverArriba() {
+        this.posicion = this.posicion.posicionArriba();
+    }
+
+    public Posicion obtenerPosicion() {
         return this.posicion;
-    }
-
-    public void mover(IPosicion siguientePosicion) {
-        lapiz.pintar(this.posicion);
-        this.posicion = siguientePosicion;
-    }
-
-    public void apoyarLapiz() {
-        this.lapiz = new LapizApoyado(this.color);
-    }
-
-    public void levantarLapiz()
-    {
-        this.lapiz = new LapizLevantado();
     }
 }
