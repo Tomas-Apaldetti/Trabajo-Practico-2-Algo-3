@@ -52,5 +52,27 @@ public class BloqueTest {
 
         assertEquals(posicionEsperada,personaje.obtenerPosicion());
 
+
+    }
+
+    @Test
+    public void BloqueBajarLapizYMuevePersonajePintaPosicionFinal(){
+
+        Personaje personaje = new Personaje();
+        BloqueBajarLapiz bloque = new BloqueBajarLapiz();
+        bloque.ejecutar(personaje);
+        personaje.moverAbajo();
+        assertEquals(personaje.obtenerPosicion().estaPintado(), true);
+    }
+
+    @Test
+    public void BloqueBajarLapizYSubirloNoPintaLaPosicionFinalAlMoverAlPersonaje(){
+        Personaje personaje = new Personaje();
+        BloqueSubirLapiz bloqueSubir = new BloqueSubirLapiz();
+        BloqueBajarLapiz bloqueBajar = new BloqueBajarLapiz();
+        bloqueBajar.ejecutar(personaje);
+        bloqueSubir.ejecutar(personaje);
+        personaje.moverAbajo();
+        assertEquals(personaje.obtenerPosicion().estaPintado(), false);
     }
 }
