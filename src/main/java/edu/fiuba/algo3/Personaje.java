@@ -1,9 +1,7 @@
 package edu.fiuba.algo3;
 
 public class Personaje {
-    private LapizApoyado lapizApoyado = new LapizApoyado();
-    private LapizLevantado lapizLevantado = new LapizLevantado();
-    private ILapiz lapiz = lapizLevantado;
+    private ILapiz lapiz = new LapizLevantado();
     private Posicion posicion = new Posicion(0,0);
 
 
@@ -33,10 +31,10 @@ public class Personaje {
     }
 
     public void bajarLapiz() {
-        this.lapiz = lapizApoyado;
+        this.lapiz = new LapizApoyado();
     }
 
     public void subirLapiz() {
-        this.lapiz = lapizLevantado;
+        this.lapiz = new LapizLevantado();
     }
 }
