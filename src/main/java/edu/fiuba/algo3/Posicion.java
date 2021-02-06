@@ -2,17 +2,19 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 public class Posicion {
+
+    final private int desplazamiento = 1;
+
     private int blanco = 0;
     private int negro = 1;
     private int x;
     private int y;
-    private int color;
+    private int color = blanco;
 
 
     Posicion(int coordenadaX, int coordenadaY) {
         this.x = coordenadaX;
         this.y = coordenadaY;
-        this.color = blanco;
     }
 
     public boolean estaPintado(){
@@ -21,22 +23,22 @@ public class Posicion {
 // sacar numeros magicos
 
     public Posicion posicionDerecha() {
-        return new Posicion(x + 1, y);
+        return new Posicion(x + desplazamiento, y);
     }
 
     public Posicion posicionIzquierda() {
-        return new Posicion(x - 1, y);
+        return new Posicion(x - desplazamiento, y);
     }
 
     public Posicion posicionArriba() {
-        return new Posicion(x , y + 1);
+        return new Posicion(x , y + desplazamiento);
     }
 
     public Posicion posicionAbajo() {
-        return new Posicion(x , y - 1);
+        return new Posicion(x , y - desplazamiento);
     }
 
-    public ArrayList obtenerCoordenadas(){
+    public ArrayList<Integer> obtenerCoordenadas(){
         ArrayList<Integer> coordenadas = new ArrayList<>();
         coordenadas.add(this.x);
         coordenadas.add(this.y);
@@ -45,7 +47,12 @@ public class Posicion {
 
     @Override
     public boolean equals(Object otraPosicion) {
-        return this.obtenerCoordenadas().equals(((Posicion)otraPosicion).obtenerCoordenadas());
+        if (otraPosicion == this)
+            return true;
+        if (!(otraPosicion instanceof Posicion))
+            return false;
+        Posicion posicion2 = (Posicion) otraPosicion;
+        return this.obtenerCoordenadas().equals(posicion2.obtenerCoordenadas());
     }
 
     public void colorear() {

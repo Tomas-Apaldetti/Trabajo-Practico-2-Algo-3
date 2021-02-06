@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
-public class BloqueRepetir implements IAccion{
+public class BloqueRepetir implements IAccionCompuesta{
     private ArrayList<IAccion> acciones = new ArrayList<>();
     private int iteraciones;
 
@@ -27,7 +27,7 @@ public class BloqueRepetir implements IAccion{
             }
         }
     }
-
+    @Override
     public void agregarAccion(IAccion accion) {
         acciones.add(accion);
     }

@@ -10,15 +10,26 @@ public class PersonajeTest {
     @Test
     public void PersonajeComienzaConElLapizLevantadoNoPintaPosicionActual(){
         Personaje personaje = new Personaje();
-        assertEquals(personaje.obtenerPosicion().estaPintado(), false);
+        assertFalse(personaje.obtenerPosicion().estaPintado());
     }
 
     @Test
     public void PersonajeSeMueveConLapizLevantadoNoPintaNuevaPosicion(){
         Personaje personaje = new Personaje();
         personaje.moverArriba();
-        assertEquals(personaje.obtenerPosicion().estaPintado(), false);
+        assertFalse(personaje.obtenerPosicion().estaPintado());
     }
+
+    /* @Test
+    public void personajeSeMueveConLapizApoyadoPintaLaPosicionVieja()
+    {
+        Personaje personaje = new Personaje();
+        Posicion posicionVieja = personaje.obtenerPosicion();
+        personaje.bajarLapiz();
+        personaje.moverArriba();
+
+        assertEquals(posicionVieja.estaPintado(), true);
+    }*/
 
 
 }

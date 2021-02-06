@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
-public class BloqueInvertir implements IAccion{
+public class BloqueInvertir implements IAccionCompuesta{
 
     private ArrayList<IAccion> acciones = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class BloqueInvertir implements IAccion{
             accion.ejecutar(personaje);
         }
     }
-
+    @Override
     public void agregarAccion(IAccion accion) {
         acciones.add(accion);
     }

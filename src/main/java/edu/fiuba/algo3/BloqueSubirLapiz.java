@@ -8,7 +8,7 @@ public class BloqueSubirLapiz implements IAccion {
 
     @Override
     public void ejecutarInversa(Personaje personaje){
-        personaje.bajarLapiz();
+        new BloqueBajarLapiz().ejecutar(personaje);
     }
 }
 

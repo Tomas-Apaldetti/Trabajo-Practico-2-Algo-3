@@ -8,6 +8,6 @@ public class BloqueIzquierda implements IAccion {
 
     @Override
     public void ejecutarInversa(Personaje personaje){
-        personaje.moverDerecha();
+        new BloqueDerecha().ejecutar(personaje);
     }
 }

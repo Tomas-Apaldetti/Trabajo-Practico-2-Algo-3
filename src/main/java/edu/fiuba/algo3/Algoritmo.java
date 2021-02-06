@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
-public class Algoritmo implements IAccion {
+public class Algoritmo implements IAccionCompuesta {
     private ArrayList<IAccion> acciones = new ArrayList<>();
 
     @Override
@@ -18,7 +18,7 @@ public class Algoritmo implements IAccion {
             accion.ejecutarInversa(personaje);
         }
     }
-
+    @Override
     public void agregarAccion(IAccion accion){
         acciones.add(accion);
     }

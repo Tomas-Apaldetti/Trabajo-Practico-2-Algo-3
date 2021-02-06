@@ -9,6 +9,6 @@ public class BloqueAbajo implements IAccion {
 
     @Override
     public void ejecutarInversa(Personaje personaje){
-        personaje.moverArriba();
+        new BloqueArriba().ejecutar(personaje);
     }
 }
