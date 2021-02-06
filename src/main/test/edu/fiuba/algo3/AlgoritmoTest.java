@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AlgoritmoTest {
 
     @Test
-    public void seEjecutaUnAlgoritmoConUnBloqueCorrectamente(){
+    public void SeEjecutaUnAlgoritmoConUnBloqueCorrectamente(){
         Personaje personaje = new Personaje();
         Algoritmo algoritmo = new Algoritmo();
         BloqueDerecha bloque = new BloqueDerecha();
@@ -21,17 +21,19 @@ public class AlgoritmoTest {
     }
 
     @Test
-    public void seEjecutaUnAlgoritmoConUnTresBloqueCorrectamente(){
+    public void SeEjecutaUnAlgoritmoConUnTresBloqueCorrectamente(){
         Personaje personaje = new Personaje();
         Algoritmo algoritmo = new Algoritmo();
-        BloqueDerecha bloque = new BloqueDerecha();
-        Posicion posicionFinal = new Posicion(1,0);
+        BloqueDerecha bloqueDerecha = new BloqueDerecha();
+        BloqueAbajo bloqueAbajo = new BloqueAbajo();
+        BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
 
-        algoritmo.agregarAccion(bloque);
+        algoritmo.agregarAccion(bloqueBajarLapiz);
+        algoritmo.agregarAccion(bloqueDerecha);
+        algoritmo.agregarAccion(bloqueAbajo);
         algoritmo.ejecutar(personaje);
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
-
+        assertTrue(personaje.obtenerPosicion().estaPintado());
     }
 
 }

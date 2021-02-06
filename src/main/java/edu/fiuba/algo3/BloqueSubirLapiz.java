@@ -5,4 +5,10 @@ public class BloqueSubirLapiz implements IAccion {
     public void ejecutar(Personaje unPersonaje){
         unPersonaje.subirLapiz();
     }
+
+    @Override
+    public void ejecutarInversa(Personaje personaje){
+        personaje.bajarLapiz();
+    }
 }
+

@@ -4,6 +4,7 @@ public class LapizLevantado implements ILapiz{
     @Override
     public void pintar(Posicion unaPosicion) {
     }
+
 }
 
 

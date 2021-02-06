@@ -6,4 +6,8 @@ public class BloqueIzquierda implements IAccion {
         personaje.moverIzquierda();
     }
 
+    @Override
+    public void ejecutarInversa(Personaje personaje){
+        personaje.moverDerecha();
+    }
 }
