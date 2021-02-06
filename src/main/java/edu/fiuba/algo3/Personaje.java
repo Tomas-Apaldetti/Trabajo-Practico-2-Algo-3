@@ -6,25 +6,27 @@ public class Personaje {
 
 
     public void moverDerecha() {
-        this.posicion = this.posicion.posicionDerecha();
-        lapiz.pintar(this.posicion);
+        mover(this.posicion.posicionDerecha());
     }
 
     public void moverIzquierda() {
-        this.posicion = this.posicion.posicionIzquierda();
-        lapiz.pintar(this.posicion);
+        mover(this.posicion.posicionIzquierda());
     }
 
     public void moverAbajo() {
-        this.posicion = this.posicion.posicionAbajo();
-        lapiz.pintar(this.posicion);
+        mover(this.posicion.posicionAbajo());
     }
 
     public void moverArriba() {
-        this.posicion = this.posicion.posicionArriba();
-        lapiz.pintar(this.posicion);
+        mover(this.posicion.posicionArriba());
     }
 
+    private void mover(Posicion nuevaPosicion)
+    {
+        lapiz.pintar(this.posicion);
+        this.posicion = nuevaPosicion;
+        lapiz.pintar(this.posicion);
+    }
 
     public Posicion obtenerPosicion() {
         return this.posicion;
