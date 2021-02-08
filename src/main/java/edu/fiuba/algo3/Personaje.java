@@ -1,9 +1,11 @@
 package edu.fiuba.algo3;
 
-public class Personaje {
+import java.util.ArrayList;
+
+public class Personaje implements IObservableMovimientos {
     private ILapiz lapiz = new LapizLevantado();
     private Posicion posicion = new Posicion(0,0);
-
+    private ArrayList<IObservaMovimientos> observadores = new ArrayList<>();
 
     public void moverDerecha() {
         mover(this.posicion.posicionDerecha());
@@ -24,8 +26,9 @@ public class Personaje {
     private void mover(Posicion nuevaPosicion)
     {
         lapiz.pintar(this.posicion);
+        lapiz.pintar(nuevaPosicion);
+        notificarObservadores(this.posicion, nuevaPosicion);
         this.posicion = nuevaPosicion;
-        lapiz.pintar(this.posicion);
     }
 
     public Posicion obtenerPosicion() {
@@ -38,5 +41,21 @@ public class Personaje {
 
     public void subirLapiz() {
         this.lapiz = new LapizLevantado();
+    }
+
+    @Override
+    public void aniadirObservador(IObservaMovimientos observador) {
+        observadores.add(observador);
+    }
+
+    @Override
+    public void notificarObservadores(Posicion posicionAnterior, Posicion posicionSiguiente) {
+        for (IObservaMovimientos observador : this.observadores)
+            observador.avisarMovimiento(posicionAnterior, posicionSiguiente);
+    }
+
+    @Override
+    public void quitarObservador(IObservaMovimientos observador) {
+        this.observadores.remove(observador);
     }
 }
