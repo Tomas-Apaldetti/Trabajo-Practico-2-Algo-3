@@ -1,5 +1,8 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.IObservaMovimientos;
+import edu.fiuba.algo3.modelo.Posicion;
+import edu.fiuba.algo3.modelo.TableroEjecucion;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

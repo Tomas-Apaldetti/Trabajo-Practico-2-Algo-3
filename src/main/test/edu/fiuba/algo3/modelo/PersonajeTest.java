@@ -1,6 +1,10 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.IObservaMovimientos;
+import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.Posicion;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -102,17 +106,17 @@ public class PersonajeTest {
     public void personajeRealizaUnMovimientoAvisandoAUnObservador()
     {
         Personaje personaje = new Personaje();
-        IObservaMovimientos observador = mock(IObservaMovimientos.class);
+        IObservaMovimientos observador = Mockito.mock(IObservaMovimientos.class);
         personaje.aniadirObservador(observador);
         personaje.moverArriba();
-        verify(observador).avisarMovimiento(any(),any());
+        verify(observador).avisarMovimiento(any(), any());
     }
 
     @Test
     public void personajeRealizaUnMovimientoAvisandoAUnObservadorConLasPosicionesCorrespondientes()
     {
         Personaje personaje = new Personaje();
-        IObservaMovimientos observador = mock(IObservaMovimientos.class);
+        IObservaMovimientos observador = Mockito.mock(IObservaMovimientos.class);
         personaje.aniadirObservador(observador);
         Posicion posicionAnterior = personaje.obtenerPosicion();
         personaje.moverArriba();
@@ -125,35 +129,35 @@ public class PersonajeTest {
     public void personajeRealiza3MovimientosConsecutivosAvisando3VecesAUnObservador()
     {
         Personaje personaje = new Personaje();
-        IObservaMovimientos observador = mock(IObservaMovimientos.class);
+        IObservaMovimientos observador = Mockito.mock(IObservaMovimientos.class);
         personaje.aniadirObservador(observador);
         personaje.moverArriba();
         personaje.moverArriba();
         personaje.moverArriba();
-        verify(observador,times(3)).avisarMovimiento(any(),any());
+        verify(observador, times(3)).avisarMovimiento(any(), any());
     }
 
     @Test
     public void seQuitaObservadorDeUnPersonajeNoNotificaDeUnMovimiento()
     {
         Personaje personaje = new Personaje();
-        IObservaMovimientos observador = mock(IObservaMovimientos.class);
+        IObservaMovimientos observador = Mockito.mock(IObservaMovimientos.class);
         personaje.aniadirObservador(observador);
         personaje.quitarObservador(observador);
         personaje.moverArriba();
-        verify(observador,never()).avisarMovimiento(any(),any());
+        verify(observador, never()).avisarMovimiento(any(), any());
     }
 
     @Test
     public void seQuitaObservadorDeUnPersonajeLuegoDe2MovimientosParaLuegoSeguirMoviendoseSoloNotifico2Veces()
     {
         Personaje personaje = new Personaje();
-        IObservaMovimientos observador = mock(IObservaMovimientos.class);
+        IObservaMovimientos observador = Mockito.mock(IObservaMovimientos.class);
         personaje.aniadirObservador(observador);
         personaje.moverArriba();
         personaje.moverArriba();
         personaje.quitarObservador(observador);
         personaje.moverArriba();
-        verify(observador,times(2)).avisarMovimiento(any(),any());
+        verify(observador, times(2)).avisarMovimiento(any(), any());
     }
 }

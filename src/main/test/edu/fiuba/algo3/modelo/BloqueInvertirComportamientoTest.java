@@ -1,5 +1,7 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +18,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.agregarAccion(bloqueDerecha);
         bloqueInvertir.ejecutar(personaje);
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
+        Assertions.assertEquals(personaje.obtenerPosicion(),posicionFinal);
 
     }
 
@@ -30,7 +32,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.agregarAccion(bloqueIzquierda);
         bloqueInvertir.ejecutar(personaje);
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
+        Assertions.assertEquals(personaje.obtenerPosicion(),posicionFinal);
 
     }
 
@@ -44,7 +46,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.agregarAccion(bloqueAbajo);
         bloqueInvertir.ejecutar(personaje);
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
+        Assertions.assertEquals(personaje.obtenerPosicion(),posicionFinal);
 
     }
 
@@ -58,7 +60,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.agregarAccion(bloqueArriba);
         bloqueInvertir.ejecutar(personaje);
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
+        Assertions.assertEquals(personaje.obtenerPosicion(),posicionFinal);
 
     }
 
@@ -72,7 +74,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.ejecutar(personaje);
         personaje.moverAbajo();
 
-        assertTrue(personaje.obtenerPosicion().estaPintado());
+        Assertions.assertTrue(personaje.obtenerPosicion().estaPintado());
 
     }
 
@@ -87,7 +89,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.ejecutar(personaje);
         personaje.moverAbajo();
 
-        assertFalse(personaje.obtenerPosicion().estaPintado());
+        Assertions.assertFalse(personaje.obtenerPosicion().estaPintado());
 
     }
 
@@ -107,7 +109,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.ejecutar(personaje);
 
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
+        Assertions.assertEquals(personaje.obtenerPosicion(),posicionFinal);
     }
 
     @Test
@@ -124,7 +126,7 @@ public class BloqueInvertirComportamientoTest {
 
         invertirNivel2.ejecutar(personaje);
 
-        assertEquals(posicionFinal, personaje.obtenerPosicion());
+        Assertions.assertEquals(posicionFinal, personaje.obtenerPosicion());
     }
 
     @Test
@@ -142,7 +144,7 @@ public class BloqueInvertirComportamientoTest {
         invertirNivel3.agregarAccion(invertirNivel2);
         invertirNivel3.ejecutar(personaje);
 
-        assertEquals(posicionFinal, personaje.obtenerPosicion());
+        Assertions.assertEquals(posicionFinal, personaje.obtenerPosicion());
     }
 }
 

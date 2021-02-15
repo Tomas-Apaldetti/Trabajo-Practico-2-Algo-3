@@ -1,9 +1,11 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
-import javafx.geometry.Pos;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AlgoritmoTest {
 
@@ -17,7 +19,7 @@ public class AlgoritmoTest {
         algoritmo.agregarAccion(bloque);
         algoritmo.ejecutar(personaje);
 
-        assertEquals(personaje.obtenerPosicion(),posicionFinal);
+        Assert.assertEquals(personaje.obtenerPosicion(),posicionFinal);
 
     }
 
