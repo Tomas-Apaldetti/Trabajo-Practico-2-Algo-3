@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class AlgoritmoTest {
 
@@ -123,5 +125,220 @@ public class AlgoritmoTest {
 
         assertEquals(posicionEsperada, personaje.obtenerPosicion());
         assertTrue(personaje.obtenerPosicion().estaPintado());
+    }
+
+    @Test
+    public void seEliminaElPrimerBloqueDeUnAlgoritmoConBloqueSimplesTodosLosBloquesSiguientesSonEliminados()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+        algoritmo.agregarAccion(bloque3);
+
+        algoritmo.eliminarBloque(1);
+        algoritmo.ejecutar(new Personaje());
+
+        verifyNoInteractions(bloque1,bloque2,bloque3);
+    }
+
+    @Test
+    public void seEliminaElSegundoBloqueDeUnAlgoritmoConBloquesSimplesSeEjecutaElPrimeroPeroNoLosSiguientes()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+        algoritmo.agregarAccion(bloque3);
+
+        algoritmo.eliminarBloque(2);
+        algoritmo.ejecutar(new Personaje());
+
+        verify(bloque1).ejecutar(any());
+        verifyNoInteractions(bloque2,bloque3);
+    }
+
+    @Test
+    public void seEliminaElBloque10DeUnAlgoritmoCon2LanzaBloqueFueraDeRangoExcepcion()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+
+        assertThrows(BloqueFueraDeRangoExcepcion.class ,
+                    () -> {
+                            algoritmo.eliminarBloque(10);
+                        });
+    }
+
+    @Test
+    public void seEliminaElUltimoBloqueDeUnAlgoritmoConBloquesSimplesSeEjecutaCorrectamente()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+        algoritmo.agregarAccion(bloque3);
+
+        algoritmo.eliminarBloque(3);
+        algoritmo.ejecutar(new Personaje());
+
+        verify(bloque1).ejecutar(any());
+        verify(bloque2).ejecutar(any());
+        verifyNoInteractions(bloque3);
+    }
+
+    @Test
+    public void seEliminaUnBloqueCompuestoDeUnAlgoritmoEliminandoTodosLosBloquesEnElYLosSubsiguientes()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccionCompuesta bloqueCompuesto = new Algoritmo();
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+        IAccion bloque4 = mock(IAccion.class);
+
+        bloqueCompuesto.agregarAccion(bloque2);
+        bloqueCompuesto.agregarAccion(bloque3);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloqueCompuesto);
+        algoritmo.agregarAccion(bloque4);
+
+        algoritmo.eliminarBloque(2);
+
+        algoritmo.ejecutar(new Personaje());
+
+        verify(bloque1).ejecutar(any());
+        verifyNoInteractions(bloque2,bloque3,bloque4);
+    }
+
+    @Test
+    public void seEliminaUnBloqueCompuestoComoUnicoBloqueNoSeEjecutaNada()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccionCompuesta bloqueCompuesto = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+        bloqueCompuesto.agregarAccion(bloque1);
+        bloqueCompuesto.agregarAccion(bloque2);
+        bloqueCompuesto.agregarAccion(bloque3);
+
+        algoritmo.agregarAccion(bloqueCompuesto);
+
+        algoritmo.eliminarBloque(1);
+        algoritmo.ejecutar(new Personaje());
+
+        verifyNoInteractions(bloque1,bloque2,bloque3);
+    }
+    @Test
+    public void eliminarBloqueConIndiceNegativoArrojaBloqueFueraDeRangoExcepcion()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.ejecutar(new Personaje());
+
+        assertThrows(BloqueFueraDeRangoExcepcion.class, () -> {
+            algoritmo.eliminarBloque(-1);
+        });
+    }
+
+    @Test
+    public void seEliminaUnBloqueConocidoEliminandoTodosLosBloquesSubsiguientes()
+    {
+        IAccionCompuesta algoritmo= new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+        algoritmo.agregarAccion(bloque3);
+
+        algoritmo.eliminarBloque(bloque2);
+        algoritmo.ejecutar(new Personaje());
+
+        verify(bloque1).ejecutar(any());
+        verifyNoInteractions(bloque2,bloque3);
+    }
+
+    @Test
+    public void seEliminaUnBloqueQueNoSeEncuentraEnElAlgoritmoLanzaBloqueNoEncontradoExcepcion()
+    {
+        IAccionCompuesta algoritmo= new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+
+        assertThrows(BloqueNoEncontradoExcepcion.class, ()->{algoritmo.eliminarBloque(bloque3);});
+    }
+
+    @Test
+    public void seObtieneUnBloqueEnLaPosicion2EsElCorrecto()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloque2);
+        algoritmo.agregarAccion(bloque3);
+
+        assertEquals(bloque2, algoritmo.obtenerBloque(2));
+    }
+
+    @Test
+    public void seObtieneUnBloqueCompuestoEnLaPosicion2EsElCorrecto()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+        IAccion bloque1 = mock(IAccion.class);
+        IAccion bloque2 = mock(IAccion.class);
+        IAccion bloque3 = mock(IAccion.class);
+        IAccionCompuesta bloqueCompuesto = new Algoritmo();
+
+        bloqueCompuesto.agregarAccion(bloque2);
+        bloqueCompuesto.agregarAccion(bloque3);
+
+        algoritmo.agregarAccion(bloque1);
+        algoritmo.agregarAccion(bloqueCompuesto);
+
+        assertEquals(bloqueCompuesto, algoritmo.obtenerBloque(2));
+    }
+
+    @Test
+    public void seObtieneBloqueConPosicionMayorALaContenidaLanzaBloqueFueraDeRangoExcepcion()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+
+        assertThrows(BloqueFueraDeRangoExcepcion.class, ()->{
+            algoritmo.obtenerBloque(1);
+        });
+    }
+
+    @Test
+    public void seObtieneBloqueConPosicionNegativaLanzaBloqueFueraDeRangoExcepcion()
+    {
+        IAccionCompuesta algoritmo = new Algoritmo();
+
+        assertThrows(BloqueFueraDeRangoExcepcion.class, ()->{
+            algoritmo.obtenerBloque(-10);
+        });
     }
 }

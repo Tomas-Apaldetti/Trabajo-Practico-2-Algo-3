@@ -23,4 +23,19 @@ public class BloqueInvertir implements IAccionCompuesta{
     public void agregarAccion(IAccion accion) {
         acciones.add(accion);
     }
+
+    @Override
+    public void eliminarBloque(int posicionBloque) {
+        return;
+    }
+
+    @Override
+    public void eliminarBloque(IAccion bloque) {
+        return;
+    }
+
+    @Override
+    public IAccion obtenerBloque(int posicionBloque) {
+        return null;
+    }
 }
