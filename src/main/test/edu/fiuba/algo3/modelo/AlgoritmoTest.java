@@ -14,8 +14,8 @@ public class AlgoritmoTest {
     @Test
     public void SeEjecutaUnAlgoritmoConUnBloqueCorrectamente(){
         Personaje personaje = new Personaje();
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque = new BloqueDerecha();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque = new BloqueDerecha();
         Posicion posicionFinal = new Posicion(1,0);
 
         algoritmo.agregarAccion(bloque);
@@ -28,10 +28,10 @@ public class AlgoritmoTest {
     @Test
     public void SeEjecutaUnAlgoritmoConUnTresBloqueCorrectamente(){
         Personaje personaje = new Personaje();
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloqueDerecha = new BloqueDerecha();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccion bloqueBajarLapiz = new BloqueBajarLapiz();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloqueDerecha = new BloqueDerecha();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque bloqueBajarLapiz = new BloqueBajarLapiz();
 
         Posicion posicionEsperada = personaje.obtenerPosicion().posicionDerecha().posicionAbajo();
 
@@ -47,8 +47,8 @@ public class AlgoritmoTest {
     public void algoritmoConUnBloqueSeEjecutaInvertidoInvirtiendoElBloqueContenido()
     {
         Personaje personaje = new Personaje();
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque = new BloqueDerecha();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque = new BloqueDerecha();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionIzquierda();
 
         algoritmo.agregarAccion(bloque);
@@ -61,10 +61,10 @@ public class AlgoritmoTest {
     public void algoritmoConTresBloquesSeEjecutaInvertidoInvirtiendoTodosLosBloques()
     {
         Personaje personaje = new Personaje();
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloqueDerecha = new BloqueDerecha();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccion bloqueBajarLapiz = new BloqueBajarLapiz();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloqueDerecha = new BloqueDerecha();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque bloqueBajarLapiz = new BloqueBajarLapiz();
 
         Posicion posicionEsperada = personaje.obtenerPosicion().posicionIzquierda().posicionArriba();
 
@@ -81,12 +81,12 @@ public class AlgoritmoTest {
     public void algoritmoConBloqueInvertirDentroDeBloqueDeRepeticionYLapizBajoInvertidoSeEjecutaCorrectamente()
     {
         Personaje personaje = new Personaje();
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloqueBajarLapiz = new BloqueBajarLapiz();
-        IAccion bloqueArriba = new BloqueArriba();
-        IAccion bloqueIzquierda = new BloqueIzquierda();
-        IAccionCompuesta bloqueRepetir = new BloqueRepetir(3);
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloqueBajarLapiz = new BloqueBajarLapiz();
+        IBloque bloqueArriba = new BloqueArriba();
+        IBloque bloqueIzquierda = new BloqueIzquierda();
+        IBloque bloqueRepetir = new BloqueRepetir(3);
+        IBloque bloqueInvertir = new BloqueInvertir();
 
         Posicion posicionEsperada = new Posicion(3, -3);
 
@@ -107,12 +107,12 @@ public class AlgoritmoTest {
     public void algoritmoConBloqueRepetirDentroDeBloqueInvertirInvierteTodasLasAccionesDentroDelBloqueRepetir()
     {
         Personaje personaje = new Personaje();
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccionCompuesta bloqueRepetir = new BloqueRepetir(3);
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccion bloqueDerecha = new BloqueDerecha();
-        IAccion bloqueSubirLapiz = new BloqueSubirLapiz();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloqueRepetir = new BloqueRepetir(3);
+        IBloque bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque bloqueDerecha = new BloqueDerecha();
+        IBloque bloqueSubirLapiz = new BloqueSubirLapiz();
 
         Posicion posicionEsperada = new Posicion(-3, 3);
 
@@ -130,10 +130,10 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaElPrimerBloqueDeUnAlgoritmoConBloqueSimplesTodosLosBloquesSiguientesSonEliminados()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
 
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
@@ -148,10 +148,10 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaElSegundoBloqueDeUnAlgoritmoConBloquesSimplesSeEjecutaElPrimeroPeroNoLosSiguientes()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
 
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
@@ -167,9 +167,9 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaElBloque10DeUnAlgoritmoCon2LanzaBloqueFueraDeRangoExcepcion()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
 
@@ -182,10 +182,10 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaElUltimoBloqueDeUnAlgoritmoConBloquesSimplesSeEjecutaCorrectamente()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
 
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
@@ -202,12 +202,12 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaUnBloqueCompuestoDeUnAlgoritmoEliminandoTodosLosBloquesEnElYLosSubsiguientes()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccionCompuesta bloqueCompuesto = new Algoritmo();
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
-        IAccion bloque4 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloqueCompuesto = new Algoritmo();
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
+        IBloque bloque4 = mock(IBloque.class);
 
         bloqueCompuesto.agregarAccion(bloque2);
         bloqueCompuesto.agregarAccion(bloque3);
@@ -227,11 +227,11 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaUnBloqueCompuestoComoUnicoBloqueNoSeEjecutaNada()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccionCompuesta bloqueCompuesto = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloqueCompuesto = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
         bloqueCompuesto.agregarAccion(bloque1);
         bloqueCompuesto.agregarAccion(bloque2);
         bloqueCompuesto.agregarAccion(bloque3);
@@ -246,8 +246,8 @@ public class AlgoritmoTest {
     @Test
     public void eliminarBloqueConIndiceNegativoArrojaBloqueFueraDeRangoExcepcion()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
         algoritmo.agregarAccion(bloque1);
         algoritmo.ejecutar(new Personaje());
 
@@ -259,10 +259,10 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaUnBloqueConocidoEliminandoTodosLosBloquesSubsiguientes()
     {
-        IAccionCompuesta algoritmo= new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo= new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
 
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
@@ -278,10 +278,10 @@ public class AlgoritmoTest {
     @Test
     public void seEliminaUnBloqueQueNoSeEncuentraEnElAlgoritmoLanzaBloqueNoEncontradoExcepcion()
     {
-        IAccionCompuesta algoritmo= new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo= new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
 
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
@@ -292,10 +292,10 @@ public class AlgoritmoTest {
     @Test
     public void seObtieneUnBloqueEnLaPosicion2EsElCorrecto()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
 
         algoritmo.agregarAccion(bloque1);
         algoritmo.agregarAccion(bloque2);
@@ -307,11 +307,11 @@ public class AlgoritmoTest {
     @Test
     public void seObtieneUnBloqueCompuestoEnLaPosicion2EsElCorrecto()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
-        IAccion bloque1 = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
-        IAccionCompuesta bloqueCompuesto = new Algoritmo();
+        IBloque algoritmo = new Algoritmo();
+        IBloque bloque1 = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
+        IBloque bloqueCompuesto = new Algoritmo();
 
         bloqueCompuesto.agregarAccion(bloque2);
         bloqueCompuesto.agregarAccion(bloque3);
@@ -325,7 +325,7 @@ public class AlgoritmoTest {
     @Test
     public void seObtieneBloqueConPosicionMayorALaContenidaLanzaBloqueFueraDeRangoExcepcion()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
+        IBloque algoritmo = new Algoritmo();
 
         assertThrows(BloqueFueraDeRangoExcepcion.class, ()->{
             algoritmo.obtenerBloque(1);
@@ -335,7 +335,7 @@ public class AlgoritmoTest {
     @Test
     public void seObtieneBloqueConPosicionNegativaLanzaBloqueFueraDeRangoExcepcion()
     {
-        IAccionCompuesta algoritmo = new Algoritmo();
+        IBloque algoritmo = new Algoritmo();
 
         assertThrows(BloqueFueraDeRangoExcepcion.class, ()->{
             algoritmo.obtenerBloque(-10);

@@ -13,7 +13,7 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
+        IBloque bloque = mock(IBloque.class);
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.ejecutarAlgoritmo();
         verify(bloque).ejecutar(any());
@@ -24,9 +24,9 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
         tableroAlgoritmo.agregarAccion(bloque3);
@@ -43,9 +43,9 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccion bloque3 = mock(IAccion.class);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloque3 = mock(IBloque.class);
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
         tableroAlgoritmo.agregarAccion(bloque3);
@@ -65,9 +65,9 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
-        IAccionCompuesta bloqueCompuesto = new BloqueRepetir(2);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        IBloque bloqueCompuesto = new BloqueRepetir(2);
         bloqueCompuesto.agregarAccion(bloque);
         bloqueCompuesto.agregarAccion(bloque2);
         tableroAlgoritmo.agregarAccion(bloqueCompuesto);
@@ -81,12 +81,12 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
 
-        IAccion algoritmoGuardado = tableroAlgoritmo.guardarAlgoritmo();
+        IBloque algoritmoGuardado = tableroAlgoritmo.guardarAlgoritmo();
 
         algoritmoGuardado.ejecutar(personaje);
 
@@ -99,8 +99,8 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
 
@@ -117,8 +117,8 @@ public class TableroAlgoritmoTest {
     {
         Personaje personaje = new Personaje();
         TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IAccion bloque = mock(IAccion.class);
-        IAccion bloque2 = mock(IAccion.class);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
 

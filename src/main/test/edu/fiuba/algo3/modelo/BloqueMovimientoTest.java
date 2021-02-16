@@ -11,7 +11,7 @@ public class BloqueMovimientoTest {
 
         Personaje personaje = new Personaje();
         Posicion posicionEsperada = personaje.obtenerPosicion().posicionDerecha();
-        IAccion bloque = new BloqueDerecha();
+        IBloque bloque = new BloqueDerecha();
 
         bloque.ejecutar(personaje);
 
@@ -23,7 +23,7 @@ public class BloqueMovimientoTest {
 
         Personaje personaje = new Personaje();
         Posicion posicionEsperada = personaje.obtenerPosicion().posicionIzquierda();
-        IAccion bloque = new BloqueIzquierda();
+         IBloque bloque = new BloqueIzquierda();
 
         bloque.ejecutar(personaje);
 
@@ -35,7 +35,7 @@ public class BloqueMovimientoTest {
 
         Personaje personaje = new Personaje();
         Posicion posicionEsperada = personaje.obtenerPosicion().posicionAbajo();
-        IAccion bloque = new BloqueAbajo();
+         IBloque bloque = new BloqueAbajo();
 
         bloque.ejecutar(personaje);
 
@@ -47,7 +47,7 @@ public class BloqueMovimientoTest {
 
         Personaje personaje = new Personaje();
         Posicion posicionEsperada = personaje.obtenerPosicion().posicionArriba();
-        IAccion bloque = new BloqueArriba();
+       IBloque bloque = new BloqueArriba();
 
         bloque.ejecutar(personaje);
 
@@ -60,7 +60,7 @@ public class BloqueMovimientoTest {
     public void BloqueBajarLapizYMuevePersonajePintaPosicionFinal(){
 
         Personaje personaje = new Personaje();
-        IAccion bloque = new BloqueBajarLapiz();
+        IBloque bloque = new BloqueBajarLapiz();
         bloque.ejecutar(personaje);
         personaje.moverAbajo();
         assertTrue(personaje.obtenerPosicion().estaPintado());
@@ -69,8 +69,8 @@ public class BloqueMovimientoTest {
     @Test
     public void BloqueBajarLapizYSubirloNoPintaLaPosicionFinalAlMoverAlPersonaje(){
         Personaje personaje = new Personaje();
-        IAccion bloqueSubir = new BloqueSubirLapiz();
-        IAccion bloqueBajar = new BloqueBajarLapiz();
+        IBloque bloqueSubir = new BloqueSubirLapiz();
+        IBloque bloqueBajar = new BloqueBajarLapiz();
 
         bloqueBajar.ejecutar(personaje);
         bloqueSubir.ejecutar(personaje);

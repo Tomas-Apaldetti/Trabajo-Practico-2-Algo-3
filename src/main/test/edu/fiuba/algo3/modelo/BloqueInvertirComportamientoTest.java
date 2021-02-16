@@ -11,8 +11,8 @@ public class BloqueInvertirComportamientoTest {
     @Test
     public void invertirBloqueDerechaMueveALaIzquierdaEsCorrecto(){
         Personaje personaje = new Personaje();
-        IAccion bloqueDerecha = new BloqueDerecha();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueDerecha = new BloqueDerecha();
+        IBloque bloqueInvertir = new BloqueInvertir();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionIzquierda();
 
         bloqueInvertir.agregarAccion(bloqueDerecha);
@@ -25,8 +25,8 @@ public class BloqueInvertirComportamientoTest {
     @Test
     public void invertirBloqueIzquierdaMueveALaDerechaEsCorrecto(){
         Personaje personaje = new Personaje();
-        IAccion bloqueIzquierda = new BloqueIzquierda();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueIzquierda = new BloqueIzquierda();
+        IBloque bloqueInvertir = new BloqueInvertir();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionDerecha();
 
         bloqueInvertir.agregarAccion(bloqueIzquierda);
@@ -39,8 +39,8 @@ public class BloqueInvertirComportamientoTest {
     @Test
     public void invertirBloqueAbajoMueveArribaEsCorrecto(){
         Personaje personaje = new Personaje();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque bloqueInvertir = new BloqueInvertir();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionArriba();
 
         bloqueInvertir.agregarAccion(bloqueAbajo);
@@ -53,8 +53,8 @@ public class BloqueInvertirComportamientoTest {
      @Test
     public void invertirBloqueArribaMueveAbajoEsCorrecto(){
         Personaje personaje = new Personaje();
-        IAccion bloqueArriba = new BloqueArriba();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+         IBloque bloqueArriba = new BloqueArriba();
+         IBloque bloqueInvertir = new BloqueInvertir();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionAbajo();
 
         bloqueInvertir.agregarAccion(bloqueArriba);
@@ -67,8 +67,8 @@ public class BloqueInvertirComportamientoTest {
     @Test
     public void invertirBloqueSubirLapizBajaElLapiz(){
         Personaje personaje = new Personaje();
-        IAccion bloqueSubirLapiz = new BloqueSubirLapiz();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueSubirLapiz = new BloqueSubirLapiz();
+        IBloque bloqueInvertir = new BloqueInvertir();
 
         bloqueInvertir.agregarAccion(bloqueSubirLapiz);
         bloqueInvertir.ejecutar(personaje);
@@ -82,8 +82,8 @@ public class BloqueInvertirComportamientoTest {
     public void invertirBloqueBajarLapizConElLapizAbajoSubeElLapiz(){
         Personaje personaje = new Personaje();
         personaje.bajarLapiz();
-        IAccion bloqueBajarLapiz = new BloqueBajarLapiz();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueBajarLapiz = new BloqueBajarLapiz();
+        IBloque bloqueInvertir = new BloqueInvertir();
 
         bloqueInvertir.agregarAccion(bloqueBajarLapiz);
         bloqueInvertir.ejecutar(personaje);
@@ -97,10 +97,10 @@ public class BloqueInvertirComportamientoTest {
     public void InvertirComportamientoDeVariosBloquesALaVezEsCorrecto(){
         Personaje personaje = new Personaje();
         Posicion posicionFinal = new Posicion(1,-1);
-        IAccion bloqueArriba = new BloqueArriba();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccion bloqueIzquierda = new BloqueIzquierda();
-        IAccionCompuesta bloqueInvertir = new BloqueInvertir();
+        IBloque bloqueArriba = new BloqueArriba();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque bloqueIzquierda = new BloqueIzquierda();
+        IBloque bloqueInvertir = new BloqueInvertir();
 
         bloqueInvertir.agregarAccion(bloqueArriba);
         bloqueInvertir.agregarAccion(bloqueArriba);
@@ -117,9 +117,9 @@ public class BloqueInvertirComportamientoTest {
     {
         Personaje personaje = new Personaje();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionAbajo();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccionCompuesta invertirNivel1 = new BloqueInvertir();
-        IAccionCompuesta invertirNivel2 = new BloqueInvertir();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque invertirNivel1 = new BloqueInvertir();
+        IBloque invertirNivel2 = new BloqueInvertir();
 
         invertirNivel1.agregarAccion(bloqueAbajo);
         invertirNivel2.agregarAccion(invertirNivel1);
@@ -134,10 +134,10 @@ public class BloqueInvertirComportamientoTest {
     {
         Personaje personaje = new Personaje();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionArriba();
-        IAccion bloqueAbajo = new BloqueAbajo();
-        IAccionCompuesta invertirNivel1 = new BloqueInvertir();
-        IAccionCompuesta invertirNivel2 = new BloqueInvertir();
-        IAccionCompuesta invertirNivel3 = new BloqueInvertir();
+        IBloque bloqueAbajo = new BloqueAbajo();
+        IBloque invertirNivel1 = new BloqueInvertir();
+        IBloque invertirNivel2 = new BloqueInvertir();
+        IBloque invertirNivel3 = new BloqueInvertir();
 
         invertirNivel1.agregarAccion(bloqueAbajo);
         invertirNivel2.agregarAccion(invertirNivel1);

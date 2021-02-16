@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class TableroAlgoritmo {
-    private IAccionCompuesta algoritmo = new Algoritmo();
+    private IBloque algoritmo = new Algoritmo();
     private Personaje actor;
 
     TableroAlgoritmo(Personaje actor)
@@ -9,7 +9,7 @@ public class TableroAlgoritmo {
         this.actor = actor;
     }
 
-    public void agregarAccion(IAccion bloque) {
+    public void agregarAccion(IBloque bloque) {
         this.algoritmo.agregarAccion(bloque);
     }
 
@@ -17,7 +17,7 @@ public class TableroAlgoritmo {
         this.algoritmo.ejecutar(this.actor);
     }
 
-    public IAccion guardarAlgoritmo() {
+    public IBloque guardarAlgoritmo() {
         return new BloqueAlgoritmoGuardado(this.algoritmo);
     }
 

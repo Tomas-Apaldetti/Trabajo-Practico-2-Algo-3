@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class BloqueSubirLapiz implements IAccion {
+public class BloqueSubirLapiz extends BloqueSimple {
     @Override
     public void ejecutar(Personaje unPersonaje){
         unPersonaje.subirLapiz();

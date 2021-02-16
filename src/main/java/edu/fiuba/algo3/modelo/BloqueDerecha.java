@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class BloqueDerecha implements IAccion {
+public class BloqueDerecha extends BloqueSimple {
     @Override
     public void ejecutar(Personaje personaje){
         personaje.moverDerecha();

@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-public class BloqueAlgoritmoGuardado implements IAccion {
+public class BloqueAlgoritmoGuardado extends BloqueSimple {
 
-    private IAccionCompuesta algoritmo;
-    BloqueAlgoritmoGuardado(IAccionCompuesta algoritmo)
+    private IBloque algoritmo;
+    BloqueAlgoritmoGuardado(IBloque algoritmo)
     {
         this.algoritmo = algoritmo;
     }

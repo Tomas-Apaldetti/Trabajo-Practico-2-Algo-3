@@ -10,8 +10,8 @@ public class BloqueRepetirTest {
     @Test
     public void repetirBloqueIzquierdaDosVecesEsCorrecto(){
         Personaje personaje = new Personaje();
-        BloqueRepetir bloqueRepetir = new BloqueRepetir(2);
-        BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
+        IBloque bloqueRepetir = new BloqueRepetir(2);
+        IBloque bloqueIzquierda = new BloqueIzquierda();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionIzquierda().posicionIzquierda();
 
         bloqueRepetir.agregarAccion(bloqueIzquierda);
@@ -24,8 +24,8 @@ public class BloqueRepetirTest {
     public void repetirBloqueInvertidoRealizaLaAccionInvertidaDosVeces()
     {
         Personaje personaje = new Personaje();
-        BloqueRepetir bloqueRepetir = new BloqueRepetir(2);
-        BloqueIzquierda bloqueIzquierda = new BloqueIzquierda();
+        IBloque bloqueRepetir = new BloqueRepetir(2);
+        IBloque bloqueIzquierda = new BloqueIzquierda();
         Posicion posicionFinal = personaje.obtenerPosicion().posicionDerecha().posicionDerecha();
 
         bloqueRepetir.agregarAccion(bloqueIzquierda);
@@ -38,9 +38,9 @@ public class BloqueRepetirTest {
     public void repetirBloqueIzquierdayBloqueArribaDosVecesSeMueveCorectamente()
     {
         Personaje personaje = new Personaje();
-        IAccionCompuesta bloqueRepetir = new BloqueRepetir(2);
-        IAccion bloqueIzquierda = new BloqueIzquierda();
-        IAccion bloqueArriba = new BloqueArriba();
+        IBloque bloqueRepetir = new BloqueRepetir(2);
+        IBloque bloqueIzquierda = new BloqueIzquierda();
+        IBloque bloqueArriba = new BloqueArriba();
         Posicion posicionFinal = personaje.obtenerPosicion();
 
         for(int i=0;i<2;i++)
@@ -57,8 +57,8 @@ public class BloqueRepetirTest {
     public void repetirTresVecesBloqueArribaInsertadoDosVecesSeMueveCorrectamente()
     {
         Personaje personaje = new Personaje();
-        IAccionCompuesta bloqueRepetir = new BloqueRepetir(3);
-        IAccion bloqueArriba = new BloqueArriba();
+        IBloque bloqueRepetir = new BloqueRepetir(3);
+        IBloque bloqueArriba = new BloqueArriba();
         Posicion posicionFinal = personaje.obtenerPosicion();
 
         for(int i=0;i<6;i++)
