@@ -1,15 +1,16 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+
+import static edu.fiuba.algo3.modelo.Pintado.PINTADA;
+import static edu.fiuba.algo3.modelo.Pintado.SIN_PINTAR;
+
 public class Posicion {
 
     final private int desplazamiento = 1;
-
-    private int blanco = 0;
-    private int negro = 1;
     private int x;
     private int y;
-    private int color = blanco;
+    private Pintado pintada = SIN_PINTAR;
 
 
     Posicion(int coordenadaX, int coordenadaY) {
@@ -18,9 +19,8 @@ public class Posicion {
     }
 
     public boolean estaPintado(){
-        return this.color == negro;
+        return this.pintada == PINTADA;
     }
-// sacar numeros magicos
 
     public Posicion posicionDerecha() {
         return new Posicion(x + desplazamiento, y);
@@ -56,7 +56,7 @@ public class Posicion {
     }
 
     public void colorear() {
-        this.color = negro;
+        this.pintada = PINTADA;
     }
 }
 

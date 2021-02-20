@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TableroEjecucion implements IObservaMovimientos {
-    private ArrayList<Posicion> movimientos = new ArrayList<>();
+    private List<Posicion> movimientos = new ArrayList<>();
     @Override
     public void avisarMovimiento(Posicion posicion1, Posicion posicion2) {
         if(!(movimientos.isEmpty()))
@@ -17,7 +18,7 @@ public class TableroEjecucion implements IObservaMovimientos {
     }
 
     @Override
-    public ArrayList<Posicion> obtenerMovimientos() {
+    public List<Posicion> obtenerMovimientos() {
         return movimientos;
     }
 }

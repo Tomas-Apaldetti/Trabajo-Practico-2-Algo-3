@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.TableroEjecucion;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,7 +20,7 @@ public class TableroDibujoTest {
         Posicion posicion2 = posicion1.posicionAbajo();
         tablero.avisarMovimiento(posicion1,posicion2);
 
-        ArrayList<Posicion> movimientos = tablero.obtenerMovimientos();
+        List<Posicion> movimientos = tablero.obtenerMovimientos();
         boolean existenMovimientos = movimientos.contains(posicion1) && movimientos.contains(posicion2);
 
         assertTrue(existenMovimientos);
@@ -38,7 +39,7 @@ public class TableroDibujoTest {
 
         tablero.avisarMovimiento(posicion2,posicion3);
 
-        ArrayList<Posicion> movimientos = tablero.obtenerMovimientos();
+        List<Posicion> movimientos = tablero.obtenerMovimientos();
         boolean existenMovimientos = movimientos.contains(posicion1) && movimientos.contains(posicion2) && movimientos.contains(posicion3);
 
         assertTrue(existenMovimientos);
@@ -56,7 +57,7 @@ public class TableroDibujoTest {
 
         tablero.avisarMovimiento(posicion2,posicion3);
 
-        ArrayList<Posicion> movimientos = tablero.obtenerMovimientos();
+        List<Posicion> movimientos = tablero.obtenerMovimientos();
         assertEquals(3,movimientos.size());
     }
 
@@ -73,7 +74,7 @@ public class TableroDibujoTest {
             tablero.avisarMovimiento(posicion1,posicion2);
             tablero.avisarMovimiento(posicion3,posicion4);
 
-            ArrayList<Posicion> movimientos = tablero.obtenerMovimientos();
+            List<Posicion> movimientos = tablero.obtenerMovimientos();
             assertEquals(4,movimientos.size());
     }
 
@@ -90,7 +91,7 @@ public class TableroDibujoTest {
         tablero.avisarMovimiento(posicion1,posicion2);
         tablero.avisarMovimiento(posicion3,posicion4);
 
-        ArrayList<Posicion> movimientos = tablero.obtenerMovimientos();
+        List<Posicion> movimientos = tablero.obtenerMovimientos();
 
         boolean existenMovimientos = movimientos.contains(posicion1)
                 && movimientos.contains(posicion2)
@@ -117,7 +118,7 @@ public class TableroDibujoTest {
         movimientosTeoricos.add(posicion2);
         movimientosTeoricos.add(posicion3);
 
-        ArrayList<Posicion> movimientosReales = tablero.obtenerMovimientos();
+        List<Posicion> movimientosReales = tablero.obtenerMovimientos();
 
         assertEquals(movimientosTeoricos,movimientosReales);
     }
@@ -140,7 +141,7 @@ public class TableroDibujoTest {
         movimientosTeoricos.add(posicion3);
         movimientosTeoricos.add(posicion4);
 
-        ArrayList<Posicion> movimientosReales = tablero.obtenerMovimientos();
+        List<Posicion> movimientosReales = tablero.obtenerMovimientos();
 
         assertEquals(movimientosTeoricos,movimientosReales);
     }

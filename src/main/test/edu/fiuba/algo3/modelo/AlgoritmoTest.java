@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BloqueCompuesto implements IBloque{
 
-    protected ArrayList<IBloque> acciones = new ArrayList<>();
+    protected List<IBloque> acciones = new ArrayList<>();
 
     @Override
     public void agregarAccion(IBloque accion){

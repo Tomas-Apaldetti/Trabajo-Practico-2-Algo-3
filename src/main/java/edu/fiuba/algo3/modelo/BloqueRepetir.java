@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
 
 public class BloqueRepetir extends BloqueCompuesto{
     private int iteraciones;
-
 
     public BloqueRepetir(int iteraciones){
         this.iteraciones = iteraciones;
