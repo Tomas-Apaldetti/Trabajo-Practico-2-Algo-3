@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.draggable.*;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
@@ -15,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.layout.HBox;
@@ -116,11 +118,19 @@ public class App extends Application{
         zonaDeDibujo.setMinSize(368.5,368.5);
 
         VBox zonaDeConstruccion = new VBox();
+        Text texto = new Text("When run");
         zonaDeConstruccion.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 3px" );
         zonaDeConstruccion.setMinWidth(630);
+        zonaDeConstruccion.getChildren().add(texto);
         contenedorInferiorIzquierda.getChildren().addAll(zonaDeDibujo, botoneraDeAcciones);
         contenedorInferior.getChildren().addAll(contenedorInferiorIzquierda, zonaDeConstruccion);
 
+
+        /* drag & drop */
+        ArrayList<Button> listaTodosLosBotones = new ArrayList<>(Arrays.asList(botonInvertir, botonBajarLapiz, botonSubirLapiz, botonRepetir));
+        listaTodosLosBotones.addAll(listaBotonesMovimiento);
+        llenarBotonesConEventos(listaTodosLosBotones, zonaDeConstruccion);
+        transformarEnObjetivo(zonaDeConstruccion, texto);
 
         root.getChildren().add(contenedorInferior);
 
@@ -132,6 +142,24 @@ public class App extends Application{
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void llenarBotonesConEventos(ArrayList<Button> buttons, VBox vBox) {
+        for (Button button : buttons) {
+            trasnformarEnArrastrable(button, vBox);
+        }
+    }
+
+    void trasnformarEnArrastrable(Button button, VBox vBox) {
+        button.setOnDragDetected(new DragDetectedEventHandler(button));
+        button.setOnDragDone(new DragDoneEventHandler(button));
+    }
+
+    void transformarEnObjetivo(VBox vBox, Text texto) {
+        texto.setOnDragOver(new DragOverEventHandler());
+        texto.setOnDragEntered(new DragEnteredEventHandler(texto));
+        texto.setOnDragExited(new DragExitedEventHandler(texto));
+        texto.setOnDragDropped(new DragDroppedEventHandler(vBox));
     }
 
     public static void main(String[] args) {
