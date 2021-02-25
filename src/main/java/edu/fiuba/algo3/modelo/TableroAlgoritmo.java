@@ -4,7 +4,7 @@ public class TableroAlgoritmo {
     private IBloque algoritmo = new Algoritmo();
     private Personaje actor;
 
-    TableroAlgoritmo(Personaje actor)
+    public TableroAlgoritmo(Personaje actor)
     {
         this.actor = actor;
     }

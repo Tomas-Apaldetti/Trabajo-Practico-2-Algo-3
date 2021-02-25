@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.Vista;
 
-import javafx.geometry.Insets;
+import edu.fiuba.algo3.Control.BotonEjecutarEventHandler;
+import edu.fiuba.algo3.Control.BotonGuardarEventHandler;
+import edu.fiuba.algo3.Control.BotonLimpiarEventHandler;
+import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.layout.HBox;
@@ -11,17 +14,20 @@ public class BotoneraDeEjecucion extends HBox {
 
     private BotonAlgoritmoPersonalizado personalizados;
 
-    BotoneraDeEjecucion(Stage stage) {
+    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo,PanelArmado panelArmado, PanelDibujo panelDibujo) {
         this.setStyle("-fx-background-color: #896bab; -fx-border-color: black; -fx-border-width: 3px");
         this.setSpacing(50);
 
         Button botonEjecutar = new Button("Ejecutar");
-        //TODO: Agregar eventHandler
-        Button botonGuardar = new Button("Guardar");
-        //TODO: Agregar eventHandler
+        botonEjecutar.setOnAction(new BotonEjecutarEventHandler(armadorAlgoritmo, panelDibujo));
+
         Button botonLimpiar = new Button("Limpiar");
-        //TODO: Agregar eventHandler
+        botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
+
         personalizados = new BotonAlgoritmoPersonalizado(stage,"Algoritmos Guardados");
+
+        Button botonGuardar = new Button("Guardar");
+        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo, personalizados));
 
         this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar, personalizados);
 

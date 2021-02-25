@@ -1,30 +1,38 @@
 package edu.fiuba.algo3.Vista;
 
+import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorPrincipal extends VBox {
+
     private Stage root;
     private BotoneraDeEjecucion botoneraDeEjecucion;
     private BotoneraDeAcciones botoneraDeAcciones;
     private PanelDibujo panelDibujo;
     private PanelArmado panelArmado;
     private GridPane grilla = new GridPane();
+    private Personaje personaje;
+    private TableroAlgoritmo armadorAlgoritmo;
 
-    public ContenedorPrincipal(Stage stage)
+    public ContenedorPrincipal(Stage stage, Personaje personaje, TableroAlgoritmo armadorAlgoritmo)
     {
         root = stage;
         grilla.setHgap(20);
         grilla.setVgap(20);
         this.setStyle("-fx-background-color: #4e2e78;");
+        this.personaje = personaje;
+        this.armadorAlgoritmo = armadorAlgoritmo;
+        panelArmado = this.crearPanelArmado();
+        panelDibujo = this.crearPanelDibujo();
         botoneraDeEjecucion = this.crearBotoneraEjecucion();
         botoneraDeAcciones = this.crearBotoneraAccion();
-        panelDibujo = this.crearPanelDibujo();
-        panelArmado = this.crearPanelArmado();
         this.getChildren().add(grilla);
     }
+
 
     private PanelArmado crearPanelArmado() {
         PanelArmado panel = new PanelArmado();
@@ -33,14 +41,13 @@ public class ContenedorPrincipal extends VBox {
     }
 
     private PanelDibujo crearPanelDibujo() {
-        PanelDibujo panel = new PanelDibujo(root);
+        PanelDibujo panel = new PanelDibujo(root, personaje);
         grilla.add(panel,0,0);
         return panel;
-
     }
 
     private BotoneraDeEjecucion crearBotoneraEjecucion() {
-        BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root);
+        BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root, armadorAlgoritmo, panelArmado, panelDibujo);
         this.getChildren().add(botonera);
         return botonera;
     }
