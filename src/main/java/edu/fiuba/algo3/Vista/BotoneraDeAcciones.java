@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.Vista;
 
+import edu.fiuba.algo3.draggable.DragDetectedEventHandler;
+import edu.fiuba.algo3.draggable.DragDoneEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
@@ -50,6 +52,8 @@ public class BotoneraDeAcciones extends GridPane {
         this.add(botonMoverAbajo,2,2);
         this.add(botonMoverIzquierda,1,2);
         this.add(botonMoverDerecha,3,2);
+
+        agregarEventos(botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha, botonMoverArriba);
     }
 
     private void crearAcciones()
@@ -65,6 +69,8 @@ public class BotoneraDeAcciones extends GridPane {
         this.add(botonSubirLapiz,1,4);
         this.add(botonRepetir,3,4);
         this.add(botonInvertir, 4,4);
+
+        agregarEventos(botonBajarLapiz, botonSubirLapiz, botonRepetir, botonInvertir);
     }
 
     private void estilizarMovimiento(Button... botones)
@@ -94,5 +100,16 @@ public class BotoneraDeAcciones extends GridPane {
             boton.setPrefSize(80,80);
 
         }
+    }
+
+    private void agregarEventos(Button... botones) {
+        for (Button boton : botones) {
+            transformarEnArrastrable(boton);
+        }
+    }
+
+    private void transformarEnArrastrable(Button boton) {
+        boton.setOnDragDetected(new DragDetectedEventHandler(boton));
+        boton.setOnDragDone(new DragDoneEventHandler(boton));
     }
 }
