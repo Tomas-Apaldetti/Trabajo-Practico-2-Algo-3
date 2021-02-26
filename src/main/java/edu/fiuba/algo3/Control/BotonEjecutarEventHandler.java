@@ -15,9 +15,8 @@ public class BotonEjecutarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        //TODO: panelDibujo.resetear();
+        panelDibujo.resetear();
         armadorAlgoritmo.ejecutarAlgoritmo();
-        //TODO: panelDibujo.dibujarAlgoritmo();
-        System.out.println("Se ejecuto un algoritmo");
-    }
+        panelDibujo.dibujarAlgoritmo();
+        }
 }

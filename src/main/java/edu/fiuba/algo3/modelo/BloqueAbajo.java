@@ -12,3 +12,6 @@ public class BloqueAbajo extends BloqueSimple {
         new BloqueArriba().ejecutar(personaje);
     }
 }
+
+// on event ejecutar, talbero,eject
+//

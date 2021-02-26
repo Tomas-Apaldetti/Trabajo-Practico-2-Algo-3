@@ -46,7 +46,7 @@ public class BotoneraDeAcciones extends GridPane {
         Button botonMoverDerecha = new Button("→");
         Button botonMoverArriba = new Button("↑");
 
-        this.estilizarMovimiento(botonMoverAbajo,botonMoverIzquierda,botonMoverDerecha,botonMoverArriba);
+        this.estilizarBotones(botonMoverAbajo,botonMoverIzquierda,botonMoverDerecha,botonMoverArriba);
 
         this.add(botonMoverArriba,2,1);
         this.add(botonMoverAbajo,2,2);
@@ -73,7 +73,7 @@ public class BotoneraDeAcciones extends GridPane {
         agregarEventos(botonBajarLapiz, botonSubirLapiz, botonRepetir, botonInvertir);
     }
 
-    private void estilizarMovimiento(Button... botones)
+    private void estilizarBotones(Button... botones)
     {
         for (Button boton : botones) {
             boton.setFont(Font.font("Impact", 30));

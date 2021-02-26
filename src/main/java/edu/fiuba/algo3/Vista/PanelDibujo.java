@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.Posicion;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -26,17 +28,27 @@ public class PanelDibujo extends VBox implements IObservaMovimientos {
         this.getChildren().add(canvas);
     }
 
+    public void resetear(){
+        }
+
+    public void dibujarAlgoritmo(){
+        for (Posicion posicion: movimientos){
+            dibujante.setFill(Color.BLACK);
+            dibujante.fillOval(posicion.obtenerCoordenadaX()*20 +256, posicion.obtenerCoordenadaY()*-20+ 150, 20 ,20);
+            }
+
+    }
 
     @Override
-    public void avisarMovimiento(Posicion posicion1, Posicion posicion2) {
+    public void avisarMovimiento(Posicion posicionActual, Posicion posicionFinal) {
         if(!(movimientos.isEmpty()))
         {
-            Posicion ultimaPosicion = movimientos.get(movimientos.size()-1);
-            if(ultimaPosicion.equals(posicion1))
+            Posicion ultimaPosicion = movimientos.get(movimientos.size()-1);   //Creo que ya podria sacarse directamente
+            if(ultimaPosicion.equals(posicionActual));                         // No se si ahce falta tanta lógica
                 movimientos.remove(movimientos.size()-1);
         }
-        movimientos.add(posicion1);
-        movimientos.add(posicion2);
+        movimientos.add(posicionActual);
+        movimientos.add(posicionFinal);
     }
 
     @Override

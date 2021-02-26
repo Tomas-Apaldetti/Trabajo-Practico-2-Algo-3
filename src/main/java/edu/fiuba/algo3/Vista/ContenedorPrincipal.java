@@ -35,13 +35,14 @@ public class ContenedorPrincipal extends VBox {
 
 
     private PanelArmado crearPanelArmado() {
-        PanelArmado panel = new PanelArmado();
+        PanelArmado panel = new PanelArmado(this.armadorAlgoritmo);
         grilla.add(panel,1,0,1,2);
         return panel;
     }
 
     private PanelDibujo crearPanelDibujo() {
         PanelDibujo panel = new PanelDibujo(root, personaje);
+        personaje.aniadirObservador(panel);
         grilla.add(panel,0,0);
         return panel;
     }

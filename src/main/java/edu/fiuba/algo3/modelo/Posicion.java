@@ -58,5 +58,13 @@ public class Posicion {
     public void colorear() {
         this.pintada = PINTADA;
     }
+
+    public int obtenerCoordenadaX() {
+        return this.x;
+    }
+
+    public int obtenerCoordenadaY() {
+        return this.y;
+    }
 }
 

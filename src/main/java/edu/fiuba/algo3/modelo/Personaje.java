@@ -7,7 +7,7 @@ import java.util.List;
 public class Personaje implements IObservableMovimientos {
     private ILapiz lapiz = new LapizLevantado();
     private Posicion posicion = new Posicion(0,0);
-    private Collection<IObservaMovimientos> observadores = new ArrayList<>();
+    private Collection<IObservaMovimientos> observadores = new ArrayList<>(); //Para sacar
 
     public void moverDerecha() {
         mover(this.posicion.posicionDerecha());
@@ -61,3 +61,4 @@ public class Personaje implements IObservableMovimientos {
         this.observadores.remove(observador);
     }
 }
+
