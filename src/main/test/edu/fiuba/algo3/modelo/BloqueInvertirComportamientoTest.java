@@ -72,6 +72,7 @@ public class BloqueInvertirComportamientoTest {
     @Test
     public void invertirBloqueSubirLapizBajaElLapiz(){
         Personaje personaje = new Personaje();
+        Posicion posicionSupuestaAPintar = personaje.obtenerPosicion();
         IBloque bloqueSubirLapiz = new BloqueSubirLapiz();
         IBloque bloqueInvertir = new BloqueInvertir();
 
@@ -79,7 +80,7 @@ public class BloqueInvertirComportamientoTest {
         bloqueInvertir.ejecutar(personaje);
         personaje.moverAbajo();
 
-        Assertions.assertTrue(personaje.obtenerPosicion().estaPintado());
+        Assertions.assertTrue(posicionSupuestaAPintar.estaPintado());
 
     }
 

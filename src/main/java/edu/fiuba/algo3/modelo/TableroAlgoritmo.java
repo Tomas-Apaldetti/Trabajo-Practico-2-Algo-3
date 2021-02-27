@@ -23,5 +23,6 @@ public class TableroAlgoritmo {
 
     public void resetear() {
         this.algoritmo = new Algoritmo();
+        this.actor.resetear();
     }
 }

@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.*;
 
 
 public class IdentificarBloque {
-    IdentificarBloque(){
+    public IdentificarBloque(){
 
     }
 
@@ -19,11 +19,10 @@ public class IdentificarBloque {
             return new BloqueAbajo();
         }
         if (string.equals("←") ){
-            return new BloqueArriba();
-        }
-
-        if (string.equals("↑")){
             return new BloqueIzquierda();
+        }
+        if (string.equals("↑")){
+            return new BloqueArriba();
         }
 
         if (string.equals("⟳") ){

@@ -2,18 +2,16 @@ package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.draggable.DragDetectedEventHandler;
 import edu.fiuba.algo3.draggable.DragDoneEventHandler;
+import edu.fiuba.algo3.modelo.BloqueAbajo;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class BotoneraDeAcciones extends GridPane {
-
-    //TODO: Crear eventHandler
 
     BotoneraDeAcciones(Stage stage)
     {
@@ -32,7 +30,6 @@ public class BotoneraDeAcciones extends GridPane {
 
         this.setHgap(15);
         this.setVgap(15);
-
 
         this.crearMovimiento();
         this.crearAcciones();
@@ -84,6 +81,14 @@ public class BotoneraDeAcciones extends GridPane {
                             " -fx-border-radius: 20;" +
                             " -fx-text-fill: white;");
             boton.setPrefSize(80,80);
+            boton.setOnMouseEntered(event -> {
+                boton.setScaleY(1.1);
+                boton.setScaleX(1.1);
+            });
+            boton.setOnMouseExited(event -> {
+                boton.setScaleY(1);
+                boton.setScaleX(1);
+            });
         }
     }
 
@@ -98,6 +103,14 @@ public class BotoneraDeAcciones extends GridPane {
                             " -fx-background-radius: 80;" +
                             " -fx-text-fill: white;");
             boton.setPrefSize(80,80);
+            boton.setOnMouseEntered(event -> {
+                boton.setScaleY(1.1);
+                boton.setScaleX(1.1);
+            });
+            boton.setOnMouseExited(event -> {
+                boton.setScaleY(1);
+                boton.setScaleX(1);
+            });
 
         }
     }

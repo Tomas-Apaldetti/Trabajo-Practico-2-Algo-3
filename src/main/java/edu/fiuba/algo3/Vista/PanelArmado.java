@@ -13,7 +13,7 @@ public class PanelArmado extends VBox {
     private Label label = new Label("Al ejecutar ▶");
 
     PanelArmado(TableroAlgoritmo armadorAlgoritmo){
-        this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 3px");
+        this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
         this.setMinHeight(680);
         this.setMinWidth(600);
         this.getChildren().add(label);

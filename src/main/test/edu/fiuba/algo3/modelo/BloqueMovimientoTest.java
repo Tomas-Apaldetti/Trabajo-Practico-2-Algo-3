@@ -57,13 +57,14 @@ public class BloqueMovimientoTest {
     }
 
     @Test
-    public void BloqueBajarLapizYMuevePersonajePintaPosicionFinal(){
+    public void BloqueBajarLapizYMuevePersonajePintaPosicionDondeEstaba(){
 
         Personaje personaje = new Personaje();
+        Posicion posicionDondeEstaba = personaje.obtenerPosicion();
         IBloque bloque = new BloqueBajarLapiz();
         bloque.ejecutar(personaje);
         personaje.moverAbajo();
-        assertTrue(personaje.obtenerPosicion().estaPintado());
+        assertTrue(posicionDondeEstaba.estaPintado());
     }
 
     @Test

@@ -28,7 +28,7 @@ public class AlgoritmoTest {
     }
 
     @Test
-    public void SeEjecutaUnAlgoritmoConUnTresBloqueCorrectamente(){
+    public void SeEjecutaUnAlgoritmoConTresBloquesCorrectamente(){
         Personaje personaje = new Personaje();
         IBloque algoritmo = new Algoritmo();
         IBloque bloqueDerecha = new BloqueDerecha();
@@ -43,7 +43,6 @@ public class AlgoritmoTest {
         algoritmo.ejecutar(personaje);
 
         assertEquals(posicionEsperada, personaje.obtenerPosicion());
-        assertTrue(personaje.obtenerPosicion().estaPintado());
     }
     @Test
     public void algoritmoConUnBloqueSeEjecutaInvertidoInvirtiendoElBloqueContenido()
@@ -126,7 +125,6 @@ public class AlgoritmoTest {
         algoritmo.ejecutar(personaje);
 
         assertEquals(posicionEsperada, personaje.obtenerPosicion());
-        assertTrue(personaje.obtenerPosicion().estaPintado());
     }
 
     @Test

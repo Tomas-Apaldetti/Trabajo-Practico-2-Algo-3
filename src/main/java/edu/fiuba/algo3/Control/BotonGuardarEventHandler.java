@@ -35,7 +35,7 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
 
     private void pedirNombre() {
         Stage dialogoStage = new Stage();
-        dialogoStage.setHeight(120);
+        dialogoStage.setHeight(150);
         dialogoStage.setWidth(450);
         dialogoStage.initModality(Modality.WINDOW_MODAL);
         dialogoStage.initOwner(primaryStage);
@@ -44,11 +44,28 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
 
 
         VBox contenedorNombre = new VBox();
-        contenedorNombre.setSpacing(5);
+        contenedorNombre.setSpacing(15);
         contenedorNombre.setPadding(new Insets(10));
         contenedorNombre.setAlignment(Pos.CENTER);
+        contenedorNombre.setStyle("-fx-background-color: #4e2e78;");
+
         TextField nombreTextField = new TextField();
-        Button botonAceptar = new Button("Aceptar");
+        nombreTextField.setStyle("-fx-background-color: #896bab;" +
+                " -fx-border-color: white;" +
+                " -fx-border-width: 2px;" +
+                " -fx-border-radius: 80;" +
+                " -fx-background-radius: 80;" +
+                " -fx-text-fill: black;" +
+                " -fx-font-weight: bold;");
+
+        Button botonAceptar = new Button("ACEPTAR");
+        botonAceptar.setStyle("-fx-background-color: #896bab;" +
+                " -fx-border-color: white;" +
+                " -fx-border-width: 2px;" +
+                " -fx-border-radius: 80;" +
+                " -fx-background-radius: 80;" +
+                " -fx-text-fill: white;" +
+                " -fx-font-weight: bold;");
 
         contenedorNombre.getChildren().addAll(nombreTextField,botonAceptar);
         dialogoStage.setScene(new Scene(contenedorNombre,100,450));
@@ -64,8 +81,8 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
     public void guardarAlgoritmo()
     {
         IBloque algoritmo= armadorAlgoritmo.guardarAlgoritmo();
-        //TODO: if(!this.nombreAlgoritmo.isBlank())
-        //    botonAlgoritmoGuardados.guardarNuevoAlgoritmo(algoritmo, this.nombreAlgoritmo);
+        if(!this.nombreAlgoritmo.isBlank())
+            botonAlgoritmoGuardados.guardarNuevoAlgoritmo(algoritmo, this.nombreAlgoritmo);
         this.nombreAlgoritmo = "";
     }
 }

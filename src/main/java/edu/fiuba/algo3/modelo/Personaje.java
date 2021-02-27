@@ -2,12 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-public class Personaje implements IObservableMovimientos {
+public class Personaje implements IObservable {
     private ILapiz lapiz = new LapizLevantado();
     private Posicion posicion = new Posicion(0,0);
-    private Collection<IObservaMovimientos> observadores = new ArrayList<>(); //Para sacar
+    private Collection<IObservador> observadores = new ArrayList<>();
 
     public void moverDerecha() {
         mover(this.posicion.posicionDerecha());
@@ -28,9 +27,8 @@ public class Personaje implements IObservableMovimientos {
     private void mover(Posicion nuevaPosicion)
     {
         lapiz.pintar(this.posicion);
-        lapiz.pintar(nuevaPosicion);
-        notificarObservadores(this.posicion, nuevaPosicion);
         this.posicion = nuevaPosicion;
+        notificar();
     }
 
     public Posicion obtenerPosicion() {
@@ -46,19 +44,22 @@ public class Personaje implements IObservableMovimientos {
     }
 
     @Override
-    public void aniadirObservador(IObservaMovimientos observador) {
+    public void aniadirObservador(IObservador observador) {
         observadores.add(observador);
     }
 
     @Override
-    public void notificarObservadores(Posicion posicionAnterior, Posicion posicionSiguiente) {
-        for (IObservaMovimientos observador : this.observadores)
-            observador.avisarMovimiento(posicionAnterior, posicionSiguiente);
+    public void notificar() {
+        for (IObservador observador : this.observadores)
+            observador.actualizar();
     }
 
     @Override
-    public void quitarObservador(IObservaMovimientos observador) {
+    public void quitarObservador(IObservador observador) {
         this.observadores.remove(observador);
     }
-}
 
+    public void resetear() {
+        this.posicion = new Posicion(0,0);
+    }
+}

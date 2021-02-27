@@ -14,59 +14,51 @@ public class PosicionTest {
     @Test
     public void obtenerLaPosicionSinMoverseObtieneLasCoordenadasCorrectas() {
         Posicion posicion = new Posicion(0, 0);
-        ArrayList<Integer> coordenadasEsperadas = new ArrayList<>();
-        coordenadasEsperadas.add(0);
-        coordenadasEsperadas.add(0);
-
-        assertEquals(posicion.obtenerCoordenadas(), coordenadasEsperadas);
+        int yEsperado = 0;
+        int xEsperado = 0;
+        assertEquals(xEsperado, posicion.obtenerCoordenadaX());
+        assertEquals(yEsperado, posicion.obtenerCoordenadaY());
     }
 
     @Test
     public void desplazandoLaPosicionHaciaArribaObtengoLasCoordenadasCorrectas() {
         Posicion posicion = new Posicion(0, 0);
-        ArrayList<Integer> coordenadasEsperadas = new ArrayList<>();
-        coordenadasEsperadas.add(0);
-        coordenadasEsperadas.add(1);
+        posicion = posicion.posicionArriba();
+        int yEsperado = 1;
+        int xEsperado = 0;
+        assertEquals(xEsperado, posicion.obtenerCoordenadaX());
+        assertEquals(yEsperado, posicion.obtenerCoordenadaY());
 
-        Posicion posicionFinal = posicion.posicionArriba();
-
-        assertEquals(posicionFinal.obtenerCoordenadas(), coordenadasEsperadas);
     }
 
     @Test
     public void desplazandoLaPosicionHaciaLaDerechaObtengoLasCoordenadasCorrectas() {
         Posicion posicion = new Posicion(0, 0);
-        ArrayList<Integer> coordenadasEsperadas = new ArrayList<>();
-        coordenadasEsperadas.add(1);
-        coordenadasEsperadas.add(0);
-
-        Posicion posicionFinal = posicion.posicionDerecha();
-
-        assertEquals(posicionFinal.obtenerCoordenadas(), coordenadasEsperadas);
+        posicion = posicion.posicionDerecha();
+        int yEsperado = 0;
+        int xEsperado = 1;
+        assertEquals(xEsperado, posicion.obtenerCoordenadaX());
+        assertEquals(yEsperado, posicion.obtenerCoordenadaY());
     }
 
     @Test
     public void desplazandoLaPosicionHaciaLaIzquierdaObtengoLasCoordenadasCorrectas() {
         Posicion posicion = new Posicion(0, 0);
-        ArrayList<Integer> coordenadasEsperadas = new ArrayList<>();
-        coordenadasEsperadas.add(-1);
-        coordenadasEsperadas.add(0);
-
-        Posicion posicionFinal = posicion.posicionIzquierda();
-
-        assertEquals(posicionFinal.obtenerCoordenadas(), coordenadasEsperadas);
+        posicion = posicion.posicionIzquierda();
+        int yEsperado = 0;
+        int xEsperado = -1;
+        assertEquals(xEsperado, posicion.obtenerCoordenadaX());
+        assertEquals(yEsperado, posicion.obtenerCoordenadaY());
     }
 
     @Test
     public void desplazandoLaPosicionHaciaAbajoObtengoLasCoordenadasCorrectas() {
         Posicion posicion = new Posicion(0, 0);
-        ArrayList<Integer> coordenadasEsperadas = new ArrayList<>();
-        coordenadasEsperadas.add(0);
-        coordenadasEsperadas.add(-1);
-
-        Posicion posicionFinal = posicion.posicionAbajo();
-
-        assertEquals(posicionFinal.obtenerCoordenadas(), coordenadasEsperadas);
+        posicion = posicion.posicionAbajo();
+        int yEsperado = -1;
+        int xEsperado = 0;
+        assertEquals(xEsperado, posicion.obtenerCoordenadaX());
+        assertEquals(yEsperado, posicion.obtenerCoordenadaY());
     }
 
     @Test

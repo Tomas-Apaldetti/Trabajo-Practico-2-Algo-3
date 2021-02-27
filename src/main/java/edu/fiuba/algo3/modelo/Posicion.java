@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 import static edu.fiuba.algo3.modelo.Pintado.PINTADA;
 import static edu.fiuba.algo3.modelo.Pintado.SIN_PINTAR;
 
@@ -38,11 +36,15 @@ public class Posicion {
         return new Posicion(x , y - desplazamiento);
     }
 
-    public ArrayList<Integer> obtenerCoordenadas(){
-        ArrayList<Integer> coordenadas = new ArrayList<>();
-        coordenadas.add(this.x);
-        coordenadas.add(this.y);
-        return coordenadas;
+
+    public int obtenerCoordenadaX()
+    {
+        return this.x;
+    }
+
+    public int obtenerCoordenadaY()
+    {
+        return this.y;
     }
 
     @Override
@@ -52,19 +54,14 @@ public class Posicion {
         if (!(otraPosicion instanceof Posicion))
             return false;
         Posicion posicion2 = (Posicion) otraPosicion;
-        return this.obtenerCoordenadas().equals(posicion2.obtenerCoordenadas());
+
+        boolean xIguales = this.obtenerCoordenadaX() == posicion2.obtenerCoordenadaX();
+        boolean yIguales = this.obtenerCoordenadaY() == posicion2.obtenerCoordenadaY();
+        return xIguales && yIguales;
     }
 
     public void colorear() {
         this.pintada = PINTADA;
-    }
-
-    public int obtenerCoordenadaX() {
-        return this.x;
-    }
-
-    public int obtenerCoordenadaY() {
-        return this.y;
     }
 }
 

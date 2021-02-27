@@ -18,6 +18,7 @@ public class DragDroppedEventHandler implements EventHandler<DragEvent> {
     private IdentificarBloque identificadorBloque;
 
     public DragDroppedEventHandler(VBox vBox,TableroAlgoritmo armadorAlgoritmo) {
+        this.identificadorBloque = new IdentificarBloque();
         this.armadorAlgoritmo = armadorAlgoritmo;
         this.vBox = vBox;
     }
