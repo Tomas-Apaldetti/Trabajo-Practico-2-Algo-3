@@ -12,11 +12,11 @@ import javafx.stage.Stage;
 
 public class BotoneraDeEjecucion extends HBox {
 
-    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo,PanelArmado panelArmado, PanelDibujo panelDibujo,MenuAlgoritmoPersonalizados menuAlgoritmos) {
+
+    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo,PanelArmado panelArmado, PanelDibujo panelDibujo,MenuAlgoritmoPersonalizados menuAlgortimos) {
         this.setStyle("-fx-background-color: #896bab; -fx-border-color: black; -fx-border-width: 3px");
         this.setMinHeight(40);
         this.setSpacing(50);
-
         Button botonEjecutar = new Button("Ejecutar");
         botonEjecutar.setOnAction(new BotonEjecutarEventHandler(armadorAlgoritmo, panelDibujo));
 
@@ -24,7 +24,9 @@ public class BotoneraDeEjecucion extends HBox {
         botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
 
         Button botonGuardar = new Button("Guardar");
-        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgoritmos));
+
+        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgortimos));
+
 
         this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar);
 

@@ -17,7 +17,7 @@ public class BotonLimpiarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         armadorAlgoritmo.resetear();
-        //TODO: panelArmado.limpiarTablero();}
+        panelArmado.limpiarTablero();
         System.out.println("Se reseteo el algoritmo");
     }
 }

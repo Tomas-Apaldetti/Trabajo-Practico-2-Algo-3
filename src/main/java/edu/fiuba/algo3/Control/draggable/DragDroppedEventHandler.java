@@ -33,6 +33,8 @@ public class DragDroppedEventHandler implements EventHandler<DragEvent> {
         String simbolo = dragboard.getString();
         armadorAlgoritmo.agregarAccion(this.identificadorBloque.devolverBloque(simbolo));
         Button button = new Button(dragboard.getString());
+        button.setMaxWidth(80);
+        button.setMaxHeight(15);
         button.setFont(Font.font("Impact", 30));
         button.setStyle("-fx-background-color: #fa8072; -fx-border-color: white; -fx-border-width: 3px; -fx-text-fill: white;");
         vBox.getChildren().add(button);

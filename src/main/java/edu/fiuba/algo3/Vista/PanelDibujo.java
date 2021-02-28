@@ -35,18 +35,21 @@ public class PanelDibujo extends Pane implements IObservador {
         Posicion posicionInicial = this.personaje.obtenerPosicion();
         movimientos.add(posicionInicial);
         this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
-        this.setMinSize(512,512);
-        this.setMaxSize(512,512);
+        this.setMinSize(500,250);
+        this.setMaxSize(450,450);
         this.clipear();
         this.setSprite(RUTA_PERSONAJE);
     }
 
     private void clipear() {
         final Rectangle outputClip = new Rectangle();
-        outputClip.setWidth(512);
-        outputClip.setHeight(512);
         outputClip.setArcHeight(30);
         outputClip.setArcWidth(30);
+        this.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
+            outputClip.setWidth(newValue.getWidth());
+            outputClip.setHeight(newValue.getHeight());
+        });
+
         this.setClip(outputClip);
     }
 

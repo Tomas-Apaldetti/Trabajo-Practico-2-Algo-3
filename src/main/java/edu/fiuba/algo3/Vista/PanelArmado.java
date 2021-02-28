@@ -11,15 +11,17 @@ import javafx.scene.text.Font;
 
 public class PanelArmado extends VBox {
     private Label label = new Label("Al ejecutar ▶");
-
+    private TableroAlgoritmo armadorAlgoritmo;
     PanelArmado(TableroAlgoritmo armadorAlgoritmo){
+        this.armadorAlgoritmo = armadorAlgoritmo;
         this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
-        this.setMinHeight(680);
-        this.setMinWidth(600);
-        this.getChildren().add(label);
-
-        estilizarLabel(label);
-        transformarEnObjetivo(label,armadorAlgoritmo);
+        this.setMinSize(225,382);
+        this.setMaxSize(525, 2000);
+        //this.setMinHeight(680);
+       // this.setMinWidth(600);
+        //this.setMinSize(250,250);
+       // this.setMaxSize();
+        this.agregarLabel();
     }
 
     private void estilizarLabel(Label label) {
@@ -32,5 +34,16 @@ public class PanelArmado extends VBox {
         label.setOnDragEntered(new DragEnteredEventHandler(label));
         label.setOnDragExited(new DragExitedEventHandler(label));
         label.setOnDragDropped(new DragDroppedEventHandler(this,armadorAlgoritmo));
+    }
+
+    public void agregarLabel(){
+        this.getChildren().add(label);
+        estilizarLabel(label);
+        transformarEnObjetivo(label,this.armadorAlgoritmo);
+    }
+
+    public void limpiarTablero() {
+        this.getChildren().clear();
+        agregarLabel();
     }
 }
