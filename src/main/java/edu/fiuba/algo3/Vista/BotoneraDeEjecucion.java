@@ -18,7 +18,6 @@ public class BotoneraDeEjecucion extends HBox {
         this.setStyle("-fx-background-color: #896bab; -fx-border-color: black; -fx-border-width: 3px");
         this.setMinHeight(40);
         this.setSpacing(50);
-
         Button botonEjecutar = new Button("Ejecutar");
         botonEjecutar.setOnAction(new BotonEjecutarEventHandler(armadorAlgoritmo, panelDibujo));
 

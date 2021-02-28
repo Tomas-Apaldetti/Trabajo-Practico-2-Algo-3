@@ -17,6 +17,7 @@ public class BotonEjecutarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         panelDibujo.resetear();
         armadorAlgoritmo.ejecutarAlgoritmo();
+        System.out.println("wipi");
         panelDibujo.dibujarAlgoritmo();
         }
 }

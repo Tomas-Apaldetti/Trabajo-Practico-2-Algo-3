@@ -18,7 +18,7 @@ public class App extends Application {
         this.inicializarModelo();
 
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage,personaje,tableroAlgoritmo);
-        Scene escenaPrincipal = new Scene(contenedorPrincipal,1280,720);
+        Scene escenaPrincipal = new Scene(contenedorPrincipal,1000,500);
 
         stage.setScene(escenaPrincipal);
         stage.show();
