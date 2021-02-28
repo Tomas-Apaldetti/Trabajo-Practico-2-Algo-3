@@ -15,9 +15,11 @@ public class PanelArmado extends VBox {
     PanelArmado(TableroAlgoritmo armadorAlgoritmo){
         this.armadorAlgoritmo = armadorAlgoritmo;
         this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
+        this.setMinSize(225,382);
+        this.setMaxSize(525, 2000);
         //this.setMinHeight(680);
        // this.setMinWidth(600);
-        this.setMinSize(250,250);
+        //this.setMinSize(250,250);
        // this.setMaxSize();
         this.agregarLabel();
     }

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -46,7 +47,12 @@ public class ContenedorPrincipal extends BorderPane {
 
     private PanelArmado crearPanelArmado() {
         PanelArmado panel = new PanelArmado(this.armadorAlgoritmo);
-        this.setCenter(panel);
+        ScrollPane sideBarScroller = new ScrollPane(panel);
+        //sideBarScroller.setFitToHeight(true);
+        sideBarScroller.setFitToWidth(true);
+        sideBarScroller.setMaxHeight(800);
+        //sideBarScroller.setMinSize(250,250);
+        this.setCenter(sideBarScroller);
         return panel;
     }
 
