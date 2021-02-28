@@ -14,7 +14,7 @@ public class BotoneraDeEjecucion extends HBox {
 
     private BotonAlgoritmoPersonalizado personalizados;
 
-    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo,PanelArmado panelArmado, PanelDibujo panelDibujo) {
+    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo,PanelArmado panelArmado, PanelDibujo panelDibujo,MenuAlgoritmoPersonalizados menuAlgortimos) {
         this.setStyle("-fx-background-color: #896bab; -fx-border-color: black; -fx-border-width: 3px");
         this.setMinHeight(40);
         this.setSpacing(50);
@@ -28,7 +28,7 @@ public class BotoneraDeEjecucion extends HBox {
         personalizados = new BotonAlgoritmoPersonalizado(stage,"Algoritmos Guardados");
 
         Button botonGuardar = new Button("Guardar");
-        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo, personalizados));
+        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo, personalizados,menuAlgortimos));
 
         this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar, personalizados);
 

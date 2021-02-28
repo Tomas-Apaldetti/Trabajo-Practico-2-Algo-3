@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.draggable;
+package edu.fiuba.algo3.Control.draggable;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;

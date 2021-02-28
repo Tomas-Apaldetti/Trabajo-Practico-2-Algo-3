@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.draggable.DragDroppedEventHandler;
-import edu.fiuba.algo3.draggable.DragEnteredEventHandler;
-import edu.fiuba.algo3.draggable.DragExitedEventHandler;
-import edu.fiuba.algo3.draggable.DragOverEventHandler;
+import edu.fiuba.algo3.Control.draggable.DragDroppedEventHandler;
+import edu.fiuba.algo3.Control.draggable.DragEnteredEventHandler;
+import edu.fiuba.algo3.Control.draggable.DragExitedEventHandler;
+import edu.fiuba.algo3.Control.draggable.DragOverEventHandler;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;

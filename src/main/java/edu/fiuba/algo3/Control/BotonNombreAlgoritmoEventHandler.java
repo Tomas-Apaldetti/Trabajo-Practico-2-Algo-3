@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class BotonNombreAlgoritmoEventHandler implements EventHandler<ActionEvent> {
-    private static final int LIMITE = 20;
+    private static final int LIMITE = 17;
     private Stage dialogoStage;
     private BotonGuardarEventHandler botonGuardar;
     private TextField textField;
@@ -21,9 +21,8 @@ public class BotonNombreAlgoritmoEventHandler implements EventHandler<ActionEven
     public void handle(ActionEvent actionEvent) {
 
         String nombre = textField.getText();
-        if(nombre.length() > 20) nombre = nombre.substring(0, LIMITE);
+        if(nombre.length() > LIMITE) nombre = nombre.substring(0, LIMITE);
         dialogoStage.close();
-        botonGuardar.establecerNombreAlgoritmo(nombre);
-        botonGuardar.guardarAlgoritmo();
+        botonGuardar.guardarBotonAlgoritmoPersonalizado(nombre);;
     }
 }

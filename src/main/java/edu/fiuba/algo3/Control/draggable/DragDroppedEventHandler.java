@@ -1,14 +1,12 @@
-package edu.fiuba.algo3.draggable;
+package edu.fiuba.algo3.Control.draggable;
 
 import edu.fiuba.algo3.Vista.IdentificarBloque;
-import javafx.event.EventHandler;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
-import edu.fiuba.algo3.modelo.IBloque;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
 public class DragDroppedEventHandler implements EventHandler<DragEvent> {

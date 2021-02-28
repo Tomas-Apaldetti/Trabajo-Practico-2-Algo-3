@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Control;
 
 import edu.fiuba.algo3.Vista.BotonAlgoritmoPersonalizado;
+import edu.fiuba.algo3.Vista.MenuAlgoritmoPersonalizados;
 import edu.fiuba.algo3.modelo.IBloque;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.event.ActionEvent;
@@ -20,12 +21,13 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
     private final BotonAlgoritmoPersonalizado botonAlgoritmoGuardados;
     private final TableroAlgoritmo armadorAlgoritmo;
     private final Stage primaryStage;
-    private String nombreAlgoritmo = "";
+    private final MenuAlgoritmoPersonalizados menuAlgoritmos;
 
-    public BotonGuardarEventHandler(Stage stage, TableroAlgoritmo armadorAlgoritmo, BotonAlgoritmoPersonalizado personalizados) {
+    public BotonGuardarEventHandler(Stage stage, TableroAlgoritmo armadorAlgoritmo, BotonAlgoritmoPersonalizado personalizados,MenuAlgoritmoPersonalizados menuAlgoritmos) {
         this.primaryStage = stage;
         this.armadorAlgoritmo = armadorAlgoritmo;
         this.botonAlgoritmoGuardados = personalizados;
+        this.menuAlgoritmos = menuAlgoritmos;
     }
 
     @Override
@@ -39,7 +41,7 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
         dialogoStage.setWidth(450);
         dialogoStage.initModality(Modality.WINDOW_MODAL);
         dialogoStage.initOwner(primaryStage);
-        dialogoStage.setTitle("Nombre del Algoritmo(Max: 20 Char.)");
+        dialogoStage.setTitle("Nombre del Algoritmo(Max: 17 Char.)");
         dialogoStage.initStyle(StageStyle.UTILITY);
 
 
@@ -73,16 +75,12 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
         dialogoStage.show();
     }
 
-    public void establecerNombreAlgoritmo(String nombre)
-    {
-        this.nombreAlgoritmo = nombre;
-    }
-
-    public void guardarAlgoritmo()
+    public void guardarBotonAlgoritmoPersonalizado(String nombre)
     {
         IBloque algoritmo= armadorAlgoritmo.guardarAlgoritmo();
-        if(!this.nombreAlgoritmo.isBlank())
-            botonAlgoritmoGuardados.guardarNuevoAlgoritmo(algoritmo, this.nombreAlgoritmo);
-        this.nombreAlgoritmo = "";
+        if(!nombre.isBlank())
+            botonAlgoritmoGuardados.guardarNuevoAlgoritmo(algoritmo, nombre);
+
+        this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
     }
 }

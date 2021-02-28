@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.draggable.DragDetectedEventHandler;
-import edu.fiuba.algo3.draggable.DragDoneEventHandler;
-import edu.fiuba.algo3.modelo.BloqueAbajo;
+import edu.fiuba.algo3.Control.draggable.DragDetectedEventHandler;
+import edu.fiuba.algo3.Control.draggable.DragDoneEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;

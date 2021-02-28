@@ -14,6 +14,7 @@ public class ContenedorPrincipal extends VBox {
     private BotoneraDeAcciones botoneraDeAcciones;
     private PanelDibujo panelDibujo;
     private PanelArmado panelArmado;
+    private MenuAlgoritmoPersonalizados menuAlgoritmoPersonalizados;
     private GridPane grilla = new GridPane();
     private Personaje personaje;
     private TableroAlgoritmo armadorAlgoritmo;
@@ -28,9 +29,16 @@ public class ContenedorPrincipal extends VBox {
         this.armadorAlgoritmo = armadorAlgoritmo;
         panelArmado = this.crearPanelArmado();
         panelDibujo = this.crearPanelDibujo();
+        menuAlgoritmoPersonalizados = this.crearMenuAlgoritmoPersonalizados();
         botoneraDeEjecucion = this.crearBotoneraEjecucion();
         botoneraDeAcciones = this.crearBotoneraAccion();
         this.getChildren().add(grilla);
+    }
+
+    private MenuAlgoritmoPersonalizados crearMenuAlgoritmoPersonalizados() {
+        MenuAlgoritmoPersonalizados menu = new MenuAlgoritmoPersonalizados();
+        grilla.add(menu,2,0,1,1);
+        return menu;
     }
 
 
@@ -48,7 +56,7 @@ public class ContenedorPrincipal extends VBox {
     }
 
     private BotoneraDeEjecucion crearBotoneraEjecucion() {
-        BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root, armadorAlgoritmo, panelArmado, panelDibujo);
+        BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root, armadorAlgoritmo, panelArmado, panelDibujo,menuAlgoritmoPersonalizados);
         this.getChildren().add(botonera);
         return botonera;
     }

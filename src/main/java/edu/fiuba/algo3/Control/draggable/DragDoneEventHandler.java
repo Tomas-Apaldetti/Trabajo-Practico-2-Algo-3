@@ -1,9 +1,8 @@
-package edu.fiuba.algo3.draggable;
+package edu.fiuba.algo3.Control.draggable;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
-import javafx.scene.layout.VBox;
 
 public class DragDoneEventHandler implements EventHandler<DragEvent> {
 
