@@ -37,7 +37,7 @@ public class ContenedorPrincipal extends VBox {
 
     private MenuAlgoritmoPersonalizados crearMenuAlgoritmoPersonalizados() {
         MenuAlgoritmoPersonalizados menu = new MenuAlgoritmoPersonalizados();
-        grilla.add(menu,2,0,1,1);
+        grilla.add(menu,2,0);
         return menu;
     }
 
