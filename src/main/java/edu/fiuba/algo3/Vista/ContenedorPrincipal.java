@@ -47,12 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     private PanelArmado crearPanelArmado() {
         PanelArmado panel = new PanelArmado(this.armadorAlgoritmo);
-        ScrollPane sideBarScroller = new ScrollPane(panel);
-        //sideBarScroller.setFitToHeight(true);
-        sideBarScroller.setFitToWidth(true);
-        sideBarScroller.setMaxHeight(800);
-        //sideBarScroller.setMinSize(250,250);
-        this.setCenter(sideBarScroller);
+        this.setCenter(panel);
         return panel;
     }
 

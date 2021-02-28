@@ -4,24 +4,35 @@ import edu.fiuba.algo3.Control.draggable.DragDroppedEventHandler;
 import edu.fiuba.algo3.Control.draggable.DragEnteredEventHandler;
 import edu.fiuba.algo3.Control.draggable.DragExitedEventHandler;
 import edu.fiuba.algo3.Control.draggable.DragOverEventHandler;
+import edu.fiuba.algo3.modelo.IBloque;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class PanelArmado extends VBox {
+public class PanelArmado extends TabPane {
+
     private Label label = new Label("Al ejecutar ▶");
     private TableroAlgoritmo armadorAlgoritmo;
+    private Tab tabPrincipal;
+    private VBox panelActivo;
+    private VBox panelAlgoritmoPrincipal;
+
     PanelArmado(TableroAlgoritmo armadorAlgoritmo){
         this.armadorAlgoritmo = armadorAlgoritmo;
         this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
         this.setMinSize(225,382);
         this.setMaxSize(525, 2000);
-        //this.setMinHeight(680);
-       // this.setMinWidth(600);
-        //this.setMinSize(250,250);
-       // this.setMaxSize();
-        this.agregarLabel();
+        Tab tabPrincipal = new Tab("Algoritmo Principal");
+        this.tabPrincipal = tabPrincipal;
+        this.panelActivo = new VBox();
+        this.panelAlgoritmoPrincipal = this.panelActivo;
+        tabPrincipal.setContent(this.panelActivo);
+        this.agregarLabel(panelActivo);
+        this.getTabs().add(this.tabPrincipal);
+        this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
     }
 
     private void estilizarLabel(Label label) {
@@ -33,17 +44,20 @@ public class PanelArmado extends VBox {
         label.setOnDragOver(new DragOverEventHandler());
         label.setOnDragEntered(new DragEnteredEventHandler(label));
         label.setOnDragExited(new DragExitedEventHandler(label));
-        label.setOnDragDropped(new DragDroppedEventHandler(this,armadorAlgoritmo));
+        label.setOnDragDropped(new DragDroppedEventHandler(this, this.panelActivo ,armadorAlgoritmo));
     }
 
-    public void agregarLabel(){
-        this.getChildren().add(label);
+    public void agregarLabel(VBox panel){
+        panel.getChildren().add(label);
         estilizarLabel(label);
         transformarEnObjetivo(label,this.armadorAlgoritmo);
     }
 
     public void limpiarTablero() {
         this.getChildren().clear();
-        agregarLabel();
+    }
+
+    public void cambiarPanelActivo(VBox panelActivar)
+    {
     }
 }

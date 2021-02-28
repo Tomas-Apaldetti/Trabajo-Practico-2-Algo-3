@@ -42,7 +42,7 @@ public class IdentificarBloque {
         }
         
         if (string.equals("⇄")){
-            return new BloqueIzquierda();
+            return new BloqueInvertir();
         }
 
 
@@ -53,15 +53,19 @@ public class IdentificarBloque {
         Stage dialogoStage = new Stage();
         dialogoStage.setHeight(150);
         dialogoStage.setWidth(450);
-        dialogoStage.initModality(Modality.WINDOW_MODAL);
+        dialogoStage.initModality(Modality.APPLICATION_MODAL);
         dialogoStage.setTitle("Cantidad de Repeticiones(Default:2)");
-        dialogoStage.initStyle(StageStyle.UTILITY);
+        dialogoStage.initStyle(StageStyle.TRANSPARENT);
 
         VBox contenedorNombre = new VBox();
         contenedorNombre.setSpacing(15);
         contenedorNombre.setPadding(new Insets(10));
         contenedorNombre.setAlignment(Pos.CENTER);
-        contenedorNombre.setStyle("-fx-background-color: #4e2e78;");
+        contenedorNombre.setStyle("-fx-background-color: #4e2e78;"+
+                " -fx-border-color: black;" +
+                " -fx-border-width: 2px;" +
+                " -fx-border-radius: 80;" +
+                " -fx-background-radius: 80;");
 
         ChoiceBox<Integer> choiceBox = new ChoiceBox<>();
         choiceBox.setStyle("-fx-background-color: #896bab;" +
