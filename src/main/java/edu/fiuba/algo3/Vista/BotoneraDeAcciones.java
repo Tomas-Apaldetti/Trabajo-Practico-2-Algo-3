@@ -19,6 +19,8 @@ public class BotoneraDeAcciones extends HBox {
         this.crearAcciones();
         this.setAlignment(Pos.CENTER);
         this.setSpacing(40);
+        this.setPrefHeight(75);
+        this.setStyle("-fx-border-color: black; -fx-border-width: 3px");
 
     }
 
@@ -59,14 +61,14 @@ public class BotoneraDeAcciones extends HBox {
     private void estilizarBotones(Button... botones)
     {
         for (Button boton : botones) {
-            boton.setFont(Font.font("Impact", 30));
+            boton.setFont(Font.font("Impact", 20));
             boton.setStyle( " -fx-background-radius: 20;" +
                             " -fx-background-color: #896bab;" +
                             " -fx-border-color: white;" +
                             " -fx-border-width: 2px;" +
                             " -fx-border-radius: 20;" +
                             " -fx-text-fill: white;");
-            boton.setPrefSize(80,80);
+            boton.setPrefSize(60,60);
             boton.setOnMouseEntered(event -> {
                 boton.setScaleY(1.1);
                 boton.setScaleX(1.1);
@@ -88,7 +90,7 @@ public class BotoneraDeAcciones extends HBox {
                             " -fx-border-radius: 80;" +
                             " -fx-background-radius: 80;" +
                             " -fx-text-fill: white;");
-            boton.setPrefSize(80,80);
+            boton.setPrefSize(60,60);
             boton.setOnMouseEntered(event -> {
                 boton.setScaleY(1.1);
                 boton.setScaleX(1.1);

@@ -36,7 +36,7 @@ public class PanelDibujo extends Pane implements IObservador {
         movimientos.add(posicionInicial);
         this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
         this.setMinSize(500,250);
-        this.setMaxSize(640,640);
+       // this.setMaxSize(640,640);
         this.clipear();
         this.setSprite(RUTA_PERSONAJE);
     }

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Vista;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -54,6 +55,7 @@ public class ContenedorPrincipal extends BorderPane {
         PanelDibujo panel = new PanelDibujo(root, personaje);
         personaje.aniadirObservador(panel);
         this.setLeft(panel);
+        this.setAlignment(panel, Pos.CENTER_LEFT);
         return panel;
     }
 
