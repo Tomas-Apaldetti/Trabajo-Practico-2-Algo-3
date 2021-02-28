@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.Control;
 
-import edu.fiuba.algo3.Vista.BotonAlgoritmoPersonalizado;
 import edu.fiuba.algo3.Vista.MenuAlgoritmoPersonalizados;
 import edu.fiuba.algo3.modelo.IBloque;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
@@ -18,15 +17,13 @@ import javafx.stage.StageStyle;
 
 public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
 
-    private final BotonAlgoritmoPersonalizado botonAlgoritmoGuardados;
     private final TableroAlgoritmo armadorAlgoritmo;
     private final Stage primaryStage;
     private final MenuAlgoritmoPersonalizados menuAlgoritmos;
 
-    public BotonGuardarEventHandler(Stage stage, TableroAlgoritmo armadorAlgoritmo, BotonAlgoritmoPersonalizado personalizados,MenuAlgoritmoPersonalizados menuAlgoritmos) {
+    public BotonGuardarEventHandler(Stage stage, TableroAlgoritmo armadorAlgoritmo,MenuAlgoritmoPersonalizados menuAlgoritmos) {
         this.primaryStage = stage;
         this.armadorAlgoritmo = armadorAlgoritmo;
-        this.botonAlgoritmoGuardados = personalizados;
         this.menuAlgoritmos = menuAlgoritmos;
     }
 
@@ -79,8 +76,6 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
     {
         IBloque algoritmo= armadorAlgoritmo.guardarAlgoritmo();
         if(!nombre.isBlank())
-            botonAlgoritmoGuardados.guardarNuevoAlgoritmo(algoritmo, nombre);
-
-        this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
+            this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
     }
 }

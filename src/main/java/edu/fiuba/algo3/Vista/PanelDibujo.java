@@ -43,10 +43,13 @@ public class PanelDibujo extends Pane implements IObservador {
 
     private void clipear() {
         final Rectangle outputClip = new Rectangle();
-        outputClip.setWidth(512);
-        outputClip.setHeight(512);
         outputClip.setArcHeight(30);
         outputClip.setArcWidth(30);
+        this.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
+            outputClip.setWidth(newValue.getWidth());
+            outputClip.setHeight(newValue.getHeight());
+        });
+
         this.setClip(outputClip);
     }
 

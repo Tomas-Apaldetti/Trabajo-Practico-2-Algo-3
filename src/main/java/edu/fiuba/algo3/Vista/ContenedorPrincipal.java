@@ -17,7 +17,6 @@ public class ContenedorPrincipal extends BorderPane {
     private PanelDibujo panelDibujo;
     private PanelArmado panelArmado;
     private MenuAlgoritmoPersonalizados menuAlgoritmoPersonalizados;
-    //private GridPane grilla = new GridPane();
     private Personaje personaje;
     private TableroAlgoritmo armadorAlgoritmo;
 

@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 public class BotoneraDeEjecucion extends HBox {
 
-    private BotonAlgoritmoPersonalizado personalizados;
 
     BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo,PanelArmado panelArmado, PanelDibujo panelDibujo,MenuAlgoritmoPersonalizados menuAlgortimos) {
         this.setStyle("-fx-background-color: #896bab; -fx-border-color: black; -fx-border-width: 3px");
@@ -24,14 +23,12 @@ public class BotoneraDeEjecucion extends HBox {
         Button botonLimpiar = new Button("Limpiar");
         botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
 
-        personalizados = new BotonAlgoritmoPersonalizado(stage,"Algoritmos Guardados");
-
         Button botonGuardar = new Button("Guardar");
-        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo, personalizados,menuAlgortimos));
+        botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgortimos));
 
-        this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar, personalizados);
+        this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar);
 
-        this.getChildren().addAll(botonEjecutar,botonGuardar,botonLimpiar,personalizados);
+        this.getChildren().addAll(botonEjecutar,botonGuardar,botonLimpiar);
     }
 
     private void estilizarBotones(ButtonBase... botones) {
