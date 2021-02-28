@@ -24,7 +24,9 @@ public class BotoneraDeEjecucion extends HBox {
         botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
 
         Button botonGuardar = new Button("Guardar");
+
         botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgortimos));
+
 
         this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar);
 
