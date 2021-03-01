@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
 
 public class PanelArmado extends TabPane {
 
-    private final IBloque algoritmoPrincipal;
+    private IBloque algoritmoPrincipal;
     private Label label = new Label("Al ejecutar ▶");
     private TableroAlgoritmo armadorAlgoritmo;
     private Tab tabPrincipal;
@@ -45,9 +45,11 @@ public class PanelArmado extends TabPane {
     }
 
     public void agregarLabel(VBox panel){
+        this.algoritmoPrincipal = this.armadorAlgoritmo.obtenerAlgoritmo();
         panel.getChildren().add(label);
         estilizarLabel(label);
         transformarEnObjetivo(label,this.armadorAlgoritmo);
+
     }
 
     public void limpiarTablero() {

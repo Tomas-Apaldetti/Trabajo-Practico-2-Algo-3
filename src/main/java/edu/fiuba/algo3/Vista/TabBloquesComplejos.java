@@ -27,9 +27,10 @@ public class TabBloquesComplejos extends Tab implements ITabArmadoBloques{
         this.bloqueAsociado = bloqueAsociado;
         this.panelAsociado = new VBox();
         this.botonEliminar = botonEliminar;
+        this.armadorAlgoritmo = armadorAlgoritmo;
         this.agregarLabelDnD(nombre);
         this.setContent(this.panelAsociado);
-        this.armadorAlgoritmo = armadorAlgoritmo;
+
 
     }
 
