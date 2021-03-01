@@ -86,9 +86,9 @@ public class TableroAlgoritmoTest {
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
 
-        IBloque algoritmoGuardado = tableroAlgoritmo.guardarAlgoritmo();
-
-        algoritmoGuardado.ejecutar(personaje);
+        tableroAlgoritmo.guardarAlgoritmo("BellmanFord");
+        IBloque algoritmo = tableroAlgoritmo.devolverAlgoritmoConNombre("BellmanFord");
+        algoritmo.ejecutar(personaje);
 
         verify(bloque).ejecutar(any());
         verify(bloque2).ejecutar(any());
@@ -104,7 +104,7 @@ public class TableroAlgoritmoTest {
         tableroAlgoritmo.agregarAccion(bloque);
         tableroAlgoritmo.agregarAccion(bloque2);
 
-        tableroAlgoritmo.guardarAlgoritmo();
+        tableroAlgoritmo.guardarAlgoritmo("Dijkstra");
 
         tableroAlgoritmo.ejecutarAlgoritmo();
 

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.Vista.IdentificarBloque;
 import edu.fiuba.algo3.Vista.PanelArmado;
 import edu.fiuba.algo3.Vista.TabBloquesComplejos;
 import edu.fiuba.algo3.modelo.IBloque;
+import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.DragEvent;
@@ -18,12 +19,14 @@ public class BloquesInternosDragDroppedEventHandler implements EventHandler<Drag
     private final VBox panelAsociado;
     private final PanelArmado panelPrincipal;
     private final IdentificarBloque identificadorBloque;
-    public BloquesInternosDragDroppedEventHandler(IBloque bloqueInterno, VBox panelAsociado, PanelArmado panelPrincipal)
+    private final TableroAlgoritmo armadorAlgoritmo;
+    public BloquesInternosDragDroppedEventHandler(IBloque bloqueInterno, VBox panelAsociado, PanelArmado panelPrincipal, TableroAlgoritmo armadorAlgoritmo)
     {
         this.bloqueAsociado = bloqueInterno;
         this.panelAsociado = panelAsociado;
         this.panelPrincipal = panelPrincipal;
         this.identificadorBloque = new IdentificarBloque();
+        this.armadorAlgoritmo = armadorAlgoritmo;
     }
     @Override
     public void handle(DragEvent dragEvent) {
@@ -34,7 +37,7 @@ public class BloquesInternosDragDroppedEventHandler implements EventHandler<Drag
             dragEvent.setDropCompleted(false);
         }
         String simbolo = dragboard.getString();
-        IBloque bloque = this.identificadorBloque.devolverBloque(simbolo);
+        IBloque bloque = this.identificadorBloque.devolverBloque(simbolo, this.armadorAlgoritmo);
         bloqueAsociado.agregarAccion(bloque);
         Button button = new Button(dragboard.getString());
         button.setMaxWidth(80);
@@ -51,7 +54,7 @@ public class BloquesInternosDragDroppedEventHandler implements EventHandler<Drag
             else{
                 s="Invertir";
             }
-            TabBloquesComplejos tab = new TabBloquesComplejos(s, this.panelPrincipal, bloque);
+            TabBloquesComplejos tab = new TabBloquesComplejos(s, this.panelPrincipal, bloque, this.armadorAlgoritmo);
             this.panelPrincipal.getTabs().add(tab);
             button.setOnAction(e-> this.panelPrincipal.getSelectionModel().select(tab));
             this.panelPrincipal.getSelectionModel().select(tab);

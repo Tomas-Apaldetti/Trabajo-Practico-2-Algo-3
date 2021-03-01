@@ -19,7 +19,7 @@ public class IdentificarBloque {
 
     }
 
-    public IBloque devolverBloque(String string){
+    public IBloque devolverBloque(String string, TableroAlgoritmo tableroAlgoritmo){
         if (string.equals("✐") ){
             return new BloqueSubirLapiz();
         }
@@ -36,6 +36,10 @@ public class IdentificarBloque {
             return new BloqueArriba();
         }
 
+        if (string.equals("→")){
+            return new BloqueDerecha();
+        }
+
         if (string.equals("⟳") ){
             int numeroRepeticiones = this.pedirNumeroRepeticiones();
             return new BloqueRepetir(numeroRepeticiones);
@@ -45,8 +49,7 @@ public class IdentificarBloque {
             return new BloqueInvertir();
         }
 
-
-        return new BloqueDerecha();
+        return tableroAlgoritmo.devolverAlgoritmoConNombre(string);
     }
 
     private int pedirNumeroRepeticiones() {

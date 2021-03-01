@@ -38,7 +38,8 @@ public class DragDroppedEventHandler implements EventHandler<DragEvent> {
             dragEvent.setDropCompleted(false);
         }
         String simbolo = dragboard.getString();
-        IBloque bloque = this.identificadorBloque.devolverBloque(simbolo);
+
+        IBloque bloque = this.identificadorBloque.devolverBloque(simbolo, this.armadorAlgoritmo);
         armadorAlgoritmo.agregarAccion(bloque);
         Button button = new Button(dragboard.getString());
         button.setMaxWidth(80);
@@ -55,7 +56,7 @@ public class DragDroppedEventHandler implements EventHandler<DragEvent> {
             else{
                 s="Invertir";
             }
-            TabBloquesComplejos tab = new TabBloquesComplejos(s, this.panelArmado, bloque);
+            TabBloquesComplejos tab = new TabBloquesComplejos(s, this.panelArmado, bloque, this.armadorAlgoritmo);
             this.panelArmado.getTabs().add(tab);
             button.setOnAction(e-> this.panelArmado.getSelectionModel().select(tab));
             this.panelArmado.getSelectionModel().select(tab);

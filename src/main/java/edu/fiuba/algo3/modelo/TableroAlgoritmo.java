@@ -1,8 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 public class TableroAlgoritmo {
     private IBloque algoritmo = new Algoritmo();
     private Personaje actor;
+    private Hashtable hashAlgoritmos = new Hashtable<String, IBloque>() ;
+
 
     public TableroAlgoritmo(Personaje actor)
     {
@@ -17,8 +22,14 @@ public class TableroAlgoritmo {
         this.algoritmo.ejecutar(this.actor);
     }
 
-    public IBloque guardarAlgoritmo() {
-        return new BloqueAlgoritmoGuardado(this.algoritmo);
+    public void guardarAlgoritmo(String nombreAlgoritmo) {
+        hashAlgoritmos.put(nombreAlgoritmo, this.algoritmo);
+        //return new BloqueAlgoritmoGuardado(this.algoritmo);   //RErecibe una string y se lo guarda con ese nombre
+    }
+
+    public IBloque devolverAlgoritmoConNombre(String nombreAlgoritmo){
+        IBloque algoritmo = (IBloque) hashAlgoritmos.get(nombreAlgoritmo);   // Agregar excepcion
+        return algoritmo;
     }
 
     public void resetear() {

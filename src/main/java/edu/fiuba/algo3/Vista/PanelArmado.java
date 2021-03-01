@@ -54,7 +54,9 @@ public class PanelArmado extends TabPane {
     }
 
     public void limpiarTablero() {
-        this.getChildren().clear();
+        panelActivo.getChildren().clear();
+        this.agregarLabel(this.panelActivo);
+       // panelActivo.(this.panelActivo);
     }
 
     public void cambiarPanelActivo(VBox panelActivar)

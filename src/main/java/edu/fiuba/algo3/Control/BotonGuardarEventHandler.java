@@ -74,7 +74,7 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
 
     public void guardarBotonAlgoritmoPersonalizado(String nombre)
     {
-        IBloque algoritmo= armadorAlgoritmo.guardarAlgoritmo();
+        armadorAlgoritmo.guardarAlgoritmo(nombre);
         if(!nombre.isBlank())
             this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
     }

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.Control.draggable.*;
 import edu.fiuba.algo3.modelo.IBloque;
+import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -13,8 +14,9 @@ public class TabBloquesComplejos extends Tab {
     private final PanelArmado panelArmado;
     private final IBloque bloqueAsociado;
     private final VBox panelAsociado;
+    private final TableroAlgoritmo armadorAlgoritmo;
 
-    public TabBloquesComplejos(String nombre, PanelArmado panelArmado, IBloque bloqueAsociado)
+    public TabBloquesComplejos(String nombre, PanelArmado panelArmado, IBloque bloqueAsociado, TableroAlgoritmo armadorAlgoritmo)
     {
         super(nombre);
         this.panelArmado = panelArmado;
@@ -22,6 +24,7 @@ public class TabBloquesComplejos extends Tab {
         this.panelAsociado = new VBox();
         this.agregarLabelDnD(nombre);
         this.setContent(this.panelAsociado);
+        this.armadorAlgoritmo = armadorAlgoritmo;
     }
 
     private void agregarLabelDnD(String nombre) {
@@ -31,7 +34,7 @@ public class TabBloquesComplejos extends Tab {
         labelDnD.setOnDragOver(new DragOverEventHandler());
         labelDnD.setOnDragEntered(new DragEnteredEventHandler(labelDnD));
         labelDnD.setOnDragExited(new DragExitedEventHandler(labelDnD));
-        labelDnD.setOnDragDropped(new BloquesInternosDragDroppedEventHandler(this.bloqueAsociado, this.panelAsociado, this.panelArmado));
+        labelDnD.setOnDragDropped(new BloquesInternosDragDroppedEventHandler(this.bloqueAsociado, this.panelAsociado, this.panelArmado, this.armadorAlgoritmo));
         this.panelAsociado.getChildren().add(labelDnD);
     }
 
