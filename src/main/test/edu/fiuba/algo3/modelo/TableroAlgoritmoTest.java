@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -113,6 +114,19 @@ public class TableroAlgoritmoTest {
     }
 
     @Test
+    public void seIntentaGuardarUnAlgoritmoSinBloquesSeLanzaOperacionInvalidaBloqueSimpleExcepcion()
+    {
+        Personaje personaje = new Personaje();
+        TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
+
+        assertThrows(NoHayBloquesEnElAlgoritmoAGuardarExcepcion.class,
+                ()->{
+                    tableroAlgoritmo.guardarAlgoritmo("Dijsktra");
+                });
+
+    }
+
+    @Test
     public void tableroAlgoritmoResetEliminaTodosLosBloquesEnElTablero()
     {
         Personaje personaje = new Personaje();
@@ -128,4 +142,19 @@ public class TableroAlgoritmoTest {
         verifyNoInteractions(bloque,bloque2);
     }
 
+    @Test
+    public void tableroAlgoritmoReiniciaSuAlgoritmoAlPedirleQueLoGuarde()
+    {
+        Personaje personaje = new Personaje();
+        TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        tableroAlgoritmo.agregarAccion(bloque);
+        tableroAlgoritmo.agregarAccion(bloque2);
+
+        tableroAlgoritmo.guardarAlgoritmo("Dijkstra");
+        tableroAlgoritmo.ejecutarAlgoritmo();
+
+        verifyNoInteractions(bloque,bloque2);
+    }
 }

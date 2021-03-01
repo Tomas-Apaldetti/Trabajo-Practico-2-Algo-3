@@ -4,7 +4,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class TableroAlgoritmo {
-    private IBloque algoritmo = new Algoritmo();
+    private Algoritmo algoritmo = new Algoritmo();
     private Personaje actor;
     private Hashtable hashAlgoritmos = new Hashtable<String, IBloque>() ;
 
@@ -23,8 +23,11 @@ public class TableroAlgoritmo {
     }
 
     public void guardarAlgoritmo(String nombreAlgoritmo) {
+        if (this.algoritmo.estaVacio()){
+            throw new NoHayBloquesEnElAlgoritmoAGuardarExcepcion("No es posible guardar un algoritmo sin bloques");
+        }
         hashAlgoritmos.put(nombreAlgoritmo, this.algoritmo);
-        //return new BloqueAlgoritmoGuardado(this.algoritmo);   //RErecibe una string y se lo guarda con ese nombre
+        this.resetear();
     }
 
     public IBloque devolverAlgoritmoConNombre(String nombreAlgoritmo){

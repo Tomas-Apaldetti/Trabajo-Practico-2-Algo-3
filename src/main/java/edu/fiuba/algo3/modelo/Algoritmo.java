@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Algoritmo extends BloqueCompuesto {
     @Override
     public void ejecutar(Personaje personaje) {
-        for (IBloque accion :
-                acciones) {
+        for (IBloque accion : acciones) {
             accion.ejecutar(personaje);
         }
     }
@@ -16,6 +15,10 @@ public class Algoritmo extends BloqueCompuesto {
         for (IBloque accion : acciones) {
             accion.ejecutarInversa(personaje);
         }
+    }
+
+    public boolean estaVacio(){
+        return this.acciones.isEmpty();
     }
 
 }

@@ -55,6 +55,7 @@ public class PanelArmado extends TabPane {
 
     public void limpiarTablero() {
         panelActivo.getChildren().clear();
+        this.getTabs().remove(1,this.getTabs().size());
         this.agregarLabel(this.panelActivo);
        // panelActivo.(this.panelActivo);
     }
