@@ -60,7 +60,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     private BotoneraDeEjecucion crearBotoneraEjecucion() {
-        BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root, armadorAlgoritmo, panelArmado, panelDibujo,menuAlgoritmoPersonalizados,personaje);
+        BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root, armadorAlgoritmo, panelArmado, panelDibujo,menuAlgoritmoPersonalizados);
         this.setTop(botonera);
         return botonera;
     }

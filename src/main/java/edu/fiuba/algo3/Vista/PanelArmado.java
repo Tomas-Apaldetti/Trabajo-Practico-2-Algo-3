@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.Control.draggable.DragDroppedEventHandler;
-import edu.fiuba.algo3.Control.draggable.DragEnteredEventHandler;
-import edu.fiuba.algo3.Control.draggable.DragExitedEventHandler;
-import edu.fiuba.algo3.Control.draggable.DragOverEventHandler;
+import edu.fiuba.algo3.Control.draggable.*;
 import edu.fiuba.algo3.modelo.IBloque;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
 import javafx.scene.control.Label;
@@ -14,11 +11,12 @@ import javafx.scene.text.Font;
 
 public class PanelArmado extends TabPane {
 
+    private final IBloque algoritmoPrincipal;
     private Label label = new Label("Al ejecutar ▶");
     private TableroAlgoritmo armadorAlgoritmo;
     private Tab tabPrincipal;
     private VBox panelActivo;
-    private VBox panelAlgoritmoPrincipal;
+    private BotonEliminar botonEliminar;
 
     PanelArmado(TableroAlgoritmo armadorAlgoritmo){
         this.armadorAlgoritmo = armadorAlgoritmo;
@@ -28,11 +26,10 @@ public class PanelArmado extends TabPane {
         Tab tabPrincipal = new Tab("Algoritmo Principal");
         this.tabPrincipal = tabPrincipal;
         this.panelActivo = new VBox();
-        this.panelAlgoritmoPrincipal = this.panelActivo;
         tabPrincipal.setContent(this.panelActivo);
-        this.agregarLabel(panelActivo);
         this.getTabs().add(this.tabPrincipal);
         this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+        this.algoritmoPrincipal = this.armadorAlgoritmo.obtenerAlgoritmo();
     }
 
     private void estilizarLabel(Label label) {
@@ -44,7 +41,7 @@ public class PanelArmado extends TabPane {
         label.setOnDragOver(new DragOverEventHandler());
         label.setOnDragEntered(new DragEnteredEventHandler(label));
         label.setOnDragExited(new DragExitedEventHandler(label));
-        label.setOnDragDropped(new DragDroppedEventHandler(this, this.panelActivo ,armadorAlgoritmo));
+        label.setOnDragDropped(new BloquesArmadoDragDroppedEventHandler(this.algoritmoPrincipal,this.panelActivo,this,this.armadorAlgoritmo,this.botonEliminar));
     }
 
     public void agregarLabel(VBox panel){
@@ -57,10 +54,10 @@ public class PanelArmado extends TabPane {
         panelActivo.getChildren().clear();
         this.getTabs().remove(1,this.getTabs().size());
         this.agregarLabel(this.panelActivo);
-       // panelActivo.(this.panelActivo);
     }
 
-    public void cambiarPanelActivo(VBox panelActivar)
-    {
+    public void asociarBotonEliminar(BotonEliminar botonEliminar) {
+        this.botonEliminar = botonEliminar;
+        this.agregarLabel(panelActivo);
     }
 }

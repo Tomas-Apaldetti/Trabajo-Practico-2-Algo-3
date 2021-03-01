@@ -95,23 +95,6 @@ public class TableroAlgoritmoTest {
         verify(bloque2).ejecutar(any());
     }
 
-    @Test
-    public void tableroAlgoritmoGuardaUnAlgoritmoPeroSigueEnElTablero()
-    {
-        Personaje personaje = new Personaje();
-        TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
-        IBloque bloque = mock(IBloque.class);
-        IBloque bloque2 = mock(IBloque.class);
-        tableroAlgoritmo.agregarAccion(bloque);
-        tableroAlgoritmo.agregarAccion(bloque2);
-
-        tableroAlgoritmo.guardarAlgoritmo("Dijkstra");
-
-        tableroAlgoritmo.ejecutarAlgoritmo();
-
-        verify(bloque).ejecutar(any());
-        verify(bloque2).ejecutar(any());
-    }
 
     @Test
     public void seIntentaGuardarUnAlgoritmoSinBloquesSeLanzaOperacionInvalidaBloqueSimpleExcepcion()

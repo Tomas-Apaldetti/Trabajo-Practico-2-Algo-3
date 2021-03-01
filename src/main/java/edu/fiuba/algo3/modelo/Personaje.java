@@ -61,5 +61,6 @@ public class Personaje implements IObservable {
 
     public void resetear() {
         this.posicion = new Posicion(0,0);
+        this.subirLapiz();
     }
 }

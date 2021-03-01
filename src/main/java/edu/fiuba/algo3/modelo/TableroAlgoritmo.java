@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Map;
 
 public class TableroAlgoritmo {
     private Algoritmo algoritmo = new Algoritmo();
     private Personaje actor;
-    private Hashtable hashAlgoritmos = new Hashtable<String, IBloque>() ;
+    private Map<String, IBloque> hashAlgoritmos = new Hashtable<>() ;
 
 
     public TableroAlgoritmo(Personaje actor)
@@ -34,8 +34,10 @@ public class TableroAlgoritmo {
         if (!hashAlgoritmos.containsKey(nombreAlgoritmo)) {
             throw new NoHayAlgoritmoGuardadoExcepcion("El algoritmo pedido no esta guardado");
         }
-        IBloque algoritmo = (IBloque) hashAlgoritmos.get(nombreAlgoritmo);   // Agregar excepcion
-        return algoritmo;
+        IBloque algoritmo = hashAlgoritmos.get(nombreAlgoritmo);
+        if (algoritmo == null)
+            throw new NoExisteTalAlgoritmoExcepcion("Algoritmo:" + nombreAlgoritmo + "no existe en los algoritmos guardados");
+        return new BloqueAlgoritmoGuardado(algoritmo);
     }
 
     public void resetear() {
@@ -45,5 +47,9 @@ public class TableroAlgoritmo {
 
     public void eliminarAlgoritmosPersonalizados() {
         hashAlgoritmos.clear();
+    }
+
+    public IBloque obtenerAlgoritmo() {
+        return algoritmo;
     }
 }

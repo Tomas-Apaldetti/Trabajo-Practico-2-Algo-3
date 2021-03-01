@@ -15,25 +15,29 @@ import javafx.stage.Stage;
 public class BotoneraDeEjecucion extends HBox {
 
 
-    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo, PanelArmado panelArmado, PanelDibujo panelDibujo, MenuAlgoritmoPersonalizados menuAlgortimos, Personaje personaje) {
+    BotoneraDeEjecucion(Stage stage, TableroAlgoritmo armadorAlgoritmo, PanelArmado panelArmado, PanelDibujo panelDibujo, MenuAlgoritmoPersonalizados menuAlgortimos) {
         this.setStyle("-fx-background-color: #896bab; -fx-border-color: black; -fx-border-width: 3px");
         this.setMinHeight(40);
         this.setSpacing(50);
         Button botonEjecutar = new Button("Ejecutar");
-        botonEjecutar.setOnAction(new BotonEjecutarEventHandler(armadorAlgoritmo, panelDibujo,personaje));
+        botonEjecutar.setOnAction(new BotonEjecutarEventHandler(armadorAlgoritmo, panelDibujo));
 
         Button botonLimpiar = new Button("Limpiar");
         botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
 
         Button botonGuardar = new Button("Guardar");
+
+        BotonEliminar botonEliminar = new BotonEliminar("Eliminar");
+        panelArmado.asociarBotonEliminar(botonEliminar);
+
         botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgortimos,panelArmado));
 
         Button botonEliminarAlgoritmosPersonalizados = new Button("Limpiar algoritmos personalizados");
         botonEliminarAlgoritmosPersonalizados.setOnAction(new BotonEliminarAlgoritmosPersonalizadosEventHandler(armadorAlgoritmo, menuAlgortimos));
 
-        this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar, botonEliminarAlgoritmosPersonalizados);
+        this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar, botonEliminarAlgoritmosPersonalizados,botonEliminar);
 
-        this.getChildren().addAll(botonEjecutar,botonGuardar,botonLimpiar, botonEliminarAlgoritmosPersonalizados);
+        this.getChildren().addAll(botonEjecutar,botonGuardar,botonLimpiar, botonEliminarAlgoritmosPersonalizados,botonEliminar);
     }
 
     private void estilizarBotones(ButtonBase... botones) {

@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.Vista;
 
-import edu.fiuba.algo3.Control.BotonNombreAlgoritmoEventHandler;
 import edu.fiuba.algo3.modelo.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,11 +13,8 @@ import javafx.stage.StageStyle;
 
 
 public class IdentificarBloque {
-    public IdentificarBloque(){
 
-    }
-
-    public IBloque devolverBloque(String string, TableroAlgoritmo tableroAlgoritmo){
+    public static IBloque devolverBloque(String string, TableroAlgoritmo buscarGuardados){
         if (string.equals("✐") ){
             return new BloqueSubirLapiz();
         }
@@ -41,7 +36,7 @@ public class IdentificarBloque {
         }
 
         if (string.equals("⟳") ){
-            int numeroRepeticiones = this.pedirNumeroRepeticiones();
+            int numeroRepeticiones = IdentificarBloque.pedirNumeroRepeticiones();
             return new BloqueRepetir(numeroRepeticiones);
         }
         
@@ -49,10 +44,10 @@ public class IdentificarBloque {
             return new BloqueInvertir();
         }
 
-        return tableroAlgoritmo.devolverAlgoritmoConNombre(string);
+        return buscarGuardados.devolverAlgoritmoConNombre(string);
     }
 
-    private int pedirNumeroRepeticiones() {
+    private static int pedirNumeroRepeticiones() {
         Stage dialogoStage = new Stage();
         dialogoStage.setHeight(150);
         dialogoStage.setWidth(450);
