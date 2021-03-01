@@ -25,7 +25,7 @@ public class PanelDibujo extends Pane implements IObservador {
     private Personaje personaje;
     private ImageView sprite;
 
-    private final String RUTA_PERSONAJE = "harry.jpeg";
+    private final String RUTA_PERSONAJE = "harry.png";
     private final int BLOQUE = 50;
     private final int PAUSA_MS = 350;
 

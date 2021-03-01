@@ -9,16 +9,14 @@ import javafx.scene.text.Font;
 
 public class MenuAlgoritmoPersonalizados extends VBox {
 
+    private Label encabezado = new Label("Algoritmos Guardados");
 
     MenuAlgoritmoPersonalizados(){
         this.setStyle("-fx-background-color: #ffff; -fx-border-color: black; -fx-border-width: 5px; -fx-border-radius:10; -fx-background-radius:20");
         //this.setMinHeight(680);
         //this.setMinWidth(100);
         this.setMinSize(250,250);
-        Label encabezado = new Label("Algoritmos Guardados");
-        this.getChildren().add(encabezado);
-
-        estilizarEncabezado(encabezado);
+        agregarEncabezado(this);
     }
     private void estilizarEncabezado(Label encabezado) {
         encabezado.setStyle("-fx-background-color: #eea023; -fx-padding: 10px; -fx-border-color: #eea023; -fx-border-width: 3px; -fx-text-fill: white;");
@@ -34,5 +32,13 @@ public class MenuAlgoritmoPersonalizados extends VBox {
         botonNuevoAlgoritmo.setOnDragDone(new DragDoneEventHandler(botonNuevoAlgoritmo));
     }
 
+    public void agregarEncabezado(VBox menu) {
+        menu.getChildren().add(encabezado);
+        estilizarEncabezado(encabezado);
+    }
 
+    public void limpiarMenu() {
+        this.getChildren().clear();
+        agregarEncabezado(this);
+    }
 }

@@ -157,4 +157,33 @@ public class TableroAlgoritmoTest {
 
         verifyNoInteractions(bloque,bloque2);
     }
+
+    @Test
+    public void seIntentaPedirUnAlgoritmoGuardadoInexistetenSeLanzaNoHayAlgoritmoGuardadoExcepcion() {
+        Personaje personaje = new Personaje();
+        TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
+
+        assertThrows(NoHayAlgoritmoGuardadoExcepcion.class,
+                ()->{
+                    tableroAlgoritmo.devolverAlgoritmoConNombre("Bellman-Ford");
+                });
+    }
+
+    @Test
+    public void tableroAlgoritmoEliminarAlgoritmosEliminaLosAlgoritmosGuardados() {
+        Personaje personaje = new Personaje();
+        TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        tableroAlgoritmo.agregarAccion(bloque);
+        tableroAlgoritmo.agregarAccion(bloque2);
+
+        tableroAlgoritmo.guardarAlgoritmo("Bellman-Ford");
+        tableroAlgoritmo.eliminarAlgoritmosPersonalizados();
+
+        assertThrows(NoHayAlgoritmoGuardadoExcepcion.class,
+                ()->{
+                    tableroAlgoritmo.devolverAlgoritmoConNombre("Bellman-Ford");
+                });
+    }
 }

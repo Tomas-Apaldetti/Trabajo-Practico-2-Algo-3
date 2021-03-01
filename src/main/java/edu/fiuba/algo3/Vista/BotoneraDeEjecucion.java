@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.Control.BotonEjecutarEventHandler;
+import edu.fiuba.algo3.Control.BotonEliminarAlgoritmosPersonalizadosEventHandler;
 import edu.fiuba.algo3.Control.BotonGuardarEventHandler;
 import edu.fiuba.algo3.Control.BotonLimpiarEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
@@ -25,13 +26,14 @@ public class BotoneraDeEjecucion extends HBox {
         botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
 
         Button botonGuardar = new Button("Guardar");
-
         botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgortimos,panelArmado));
 
+        Button botonEliminarAlgoritmosPersonalizados = new Button("Limpiar algoritmos personalizados");
+        botonEliminarAlgoritmosPersonalizados.setOnAction(new BotonEliminarAlgoritmosPersonalizadosEventHandler(armadorAlgoritmo, menuAlgortimos));
 
-        this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar);
+        this.estilizarBotones(botonEjecutar, botonGuardar, botonLimpiar, botonEliminarAlgoritmosPersonalizados);
 
-        this.getChildren().addAll(botonEjecutar,botonGuardar,botonLimpiar);
+        this.getChildren().addAll(botonEjecutar,botonGuardar,botonLimpiar, botonEliminarAlgoritmosPersonalizados);
     }
 
     private void estilizarBotones(ButtonBase... botones) {

@@ -31,6 +31,9 @@ public class TableroAlgoritmo {
     }
 
     public IBloque devolverAlgoritmoConNombre(String nombreAlgoritmo){
+        if (!hashAlgoritmos.containsKey(nombreAlgoritmo)) {
+            throw new NoHayAlgoritmoGuardadoExcepcion("El algoritmo pedido no esta guardado");
+        }
         IBloque algoritmo = (IBloque) hashAlgoritmos.get(nombreAlgoritmo);   // Agregar excepcion
         return algoritmo;
     }
@@ -38,5 +41,9 @@ public class TableroAlgoritmo {
     public void resetear() {
         this.algoritmo = new Algoritmo();
         this.actor.resetear();
+    }
+
+    public void eliminarAlgoritmosPersonalizados() {
+        hashAlgoritmos.clear();
     }
 }
