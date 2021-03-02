@@ -4,7 +4,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class TableroAlgoritmo {
-    private Algoritmo algoritmo = new Algoritmo();
+    private IBloque algoritmo = new Algoritmo();
     private Personaje actor;
     private Map<String, IBloque> hashAlgoritmos = new Hashtable<>() ;
 
@@ -23,7 +23,10 @@ public class TableroAlgoritmo {
     }
 
     public void guardarAlgoritmo(String nombreAlgoritmo) {
-        if (this.algoritmo.estaVacio()){
+        if (nombreAlgoritmo.isBlank()){
+            throw new ElNombreDeUnAlgoritmoNoPuedeEstarVacioExcepcion("No es posible guardar un algoritmo sin nombre");
+        }
+        if (((Algoritmo)this.algoritmo).estaVacio()){
             throw new NoHayBloquesEnElAlgoritmoAGuardarExcepcion("No es posible guardar un algoritmo sin bloques");
         }
         hashAlgoritmos.put(nombreAlgoritmo, this.algoritmo);
@@ -35,8 +38,6 @@ public class TableroAlgoritmo {
             throw new NoHayAlgoritmoGuardadoExcepcion("El algoritmo pedido no esta guardado");
         }
         IBloque algoritmo = hashAlgoritmos.get(nombreAlgoritmo);
-        if (algoritmo == null)
-            throw new NoExisteTalAlgoritmoExcepcion("Algoritmo:" + nombreAlgoritmo + "no existe en los algoritmos guardados");
         return new BloqueAlgoritmoGuardado(algoritmo);
     }
 

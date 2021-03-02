@@ -169,4 +169,19 @@ public class TableroAlgoritmoTest {
                     tableroAlgoritmo.devolverAlgoritmoConNombre("Bellman-Ford");
                 });
     }
+
+    @Test
+    public void seIntentaGuardarUnAlgoritmoSinNombreSeLanzaElNombreDeUnAlgoritmoNoPuedeEstarVacioExcepcion() {
+        Personaje personaje = new Personaje();
+        TableroAlgoritmo tableroAlgoritmo = new TableroAlgoritmo(personaje);
+        IBloque bloque = mock(IBloque.class);
+        IBloque bloque2 = mock(IBloque.class);
+        tableroAlgoritmo.agregarAccion(bloque);
+        tableroAlgoritmo.agregarAccion(bloque2);
+
+        assertThrows(ElNombreDeUnAlgoritmoNoPuedeEstarVacioExcepcion.class,
+                ()->{
+                    tableroAlgoritmo.guardarAlgoritmo("");
+                });
+    }
 }

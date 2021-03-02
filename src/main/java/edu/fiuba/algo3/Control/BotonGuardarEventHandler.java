@@ -9,10 +9,12 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -81,48 +83,25 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
     {
         try {
         armadorAlgoritmo.guardarAlgoritmo(nombre);
-        if(!nombre.isBlank())
-            this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
+        this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
         panelArmado.limpiarTablero();
         }
-        catch (RuntimeException NoHayBloquesEnElAlgoritmoExcepcion){
-            Stage errorStage = new Stage();
-            errorStage.setHeight(100);
-            errorStage.setWidth(550);
-            errorStage.initModality(Modality.WINDOW_MODAL);
-            errorStage.initOwner(primaryStage);
-            errorStage.setTitle("Advertencia");
-            errorStage.initStyle(StageStyle.UTILITY);
-
-
-            VBox contenedorMensajeError = new VBox();
-            contenedorMensajeError.setSpacing(15);
-            contenedorMensajeError.setPadding(new Insets(10));
-            contenedorMensajeError.setAlignment(Pos.CENTER);
-            contenedorMensajeError.setStyle("-fx-background-color: #ffffff;");
-
-            Label mensajeError = new Label("Por favor agregue algún bloque al algoritmo antes de guardarlo");
-            mensajeError.setStyle("-fx-background-color: #ffffff;" +
-                    " -fx-border-color: white;" +
-                    " -fx-border-width: 2px;" +
-                    " -fx-border-radius: 80;" +
-                    " -fx-background-radius: 80;" +
-                    " -fx-text-fill: black;" +
-                    " -fx-font-weight: bold;");
-
-            Button botonEntendido = new Button("Entendido");
-            botonEntendido.setStyle("-fx-background-color: #ffffff;" +
-                    " -fx-border-color: black;" +
-                    " -fx-border-width: 2px;" +
-                    " -fx-border-radius: 80;" +
-                    " -fx-background-radius: 80;" +
-                    " -fx-text-fill: black;" +
-                    " -fx-font-weight: bold;");
-
-            botonEntendido.setOnAction(e->{errorStage.close();});
-            contenedorMensajeError.getChildren().addAll(mensajeError,botonEntendido);
-            errorStage.setScene(new Scene(contenedorMensajeError,100,550));
-            errorStage.show();
+        catch (IllegalArgumentException ElNombreDeUnAlgoritoNoPuedeEstarVacioExcepcion){
+            this.mostrarAlerta("Por favor ingrese un nombre para guardar el algoritmo");
         }
+
+        catch (IllegalStateException NoHayBloquesEnElAlgoritmoExcepcion){
+            this.mostrarAlerta("Por favor agregue algún bloque al algoritmo antes de guardarlo");
+        }
+
     }
+
+    public void mostrarAlerta(String mensaje){
+        Alert alerta = new Alert(Alert.AlertType.WARNING, mensaje);
+        alerta.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alerta.show();
+
+    }
+
+
 }
