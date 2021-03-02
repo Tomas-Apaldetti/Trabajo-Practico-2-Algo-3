@@ -25,7 +25,7 @@ public class PanelDibujo extends Pane implements IObservador {
     private Personaje personaje;
     private ImageView sprite;
 
-    private final String RUTA_PERSONAJE = "harry.png";
+    private final String RUTA_PERSONAJE = "harry_transparente.png";
     private final int BLOQUE = 50;
     private final int PAUSA_MS = 350;
 
@@ -79,7 +79,7 @@ public class PanelDibujo extends Pane implements IObservador {
         for (Posicion posicion: movimientos){
             Color color = Color.TRANSPARENT;
             if(posicion.estaPintado())
-                color = Color.BLACK;
+                color = Color.SLATEGRAY;
 
             Ellipse espacio = new Ellipse(posicion.obtenerCoordenadaX() * BLOQUE + 256,
                     posicion.obtenerCoordenadaY() * (-BLOQUE) + 256,
