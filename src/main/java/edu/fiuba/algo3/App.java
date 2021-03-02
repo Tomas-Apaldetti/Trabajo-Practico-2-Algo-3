@@ -29,7 +29,7 @@ public class App extends Application {
         tableroAlgoritmo = new TableroAlgoritmo(personaje);
     }
 
-    public static void main(String[] args)
+    public static void ejecutar(String[] args)
     {
         launch(args);
     }

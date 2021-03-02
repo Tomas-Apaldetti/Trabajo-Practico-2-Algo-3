@@ -33,7 +33,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <version>4.13.2</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -53,7 +53,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.1</version>
                 <configuration>
-                    <mainClass>edu.fiuba.algo3.App1</mainClass>
+                    <mainClass>edu.fiuba.algo3.Launcher</mainClass>
                 </configuration>
             </plugin><plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -81,6 +81,19 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <outputDirectory>out/</outputDirectory>
+                    <archive>
+                        <manifest>
+                            <mainClass>edu.fiuba.algo3.Launcher</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

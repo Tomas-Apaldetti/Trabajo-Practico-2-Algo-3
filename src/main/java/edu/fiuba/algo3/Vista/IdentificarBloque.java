@@ -94,7 +94,6 @@ public class IdentificarBloque {
         botonAceptar.setOnAction(e -> dialogoStage.close());
         dialogoStage.showAndWait();
         int seleccion = choiceBox.getSelectionModel().getSelectedItem();
-        System.out.println(seleccion);
         return seleccion;
     }
 
