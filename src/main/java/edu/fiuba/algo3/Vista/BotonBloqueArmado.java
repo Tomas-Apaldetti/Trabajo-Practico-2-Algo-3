@@ -35,7 +35,7 @@ public class BotonBloqueArmado extends Button {
     }
 
     private void estilizar() {
-        this.setMaxWidth(80);
+        this.setMinWidth(80);
         this.setMaxHeight(15);
         this.setFont(Font.font("Impact", 30));
         this.setStyle("-fx-background-color: #fa8072; -fx-border-color: white; -fx-border-width: 3px; -fx-text-fill: white;");
