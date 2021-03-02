@@ -11,6 +11,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import java.util.List;
+
 public class BotonBloqueArmado extends Button {
 
     private final IBloque bloquePadre;
@@ -81,6 +83,12 @@ public class BotonBloqueArmado extends Button {
         ObservableList<Node> contenedor = this.contenedorPadre.getChildren();
         int inicio = contenedor.indexOf(this);
         int fin = contenedor.size();
+        List<Node> botonesAbajo = contenedor.subList(inicio,fin);
+        for (Node botonAbajo : botonesAbajo)
+        {
+            BotonBloqueArmado botonBloqueAbajo = (BotonBloqueArmado) botonAbajo;
+            botonBloqueAbajo.eliminarHijos();
+        }
         contenedor.remove(inicio,fin);
     }
 }
