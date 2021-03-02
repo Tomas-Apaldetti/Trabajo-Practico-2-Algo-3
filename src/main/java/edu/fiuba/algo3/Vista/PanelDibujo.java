@@ -94,6 +94,7 @@ public class PanelDibujo extends Pane implements IObservador {
 
             KeyFrame frame = new KeyFrame(Duration.millis(PAUSA_MS*i), e-> {
                 this.getChildren().add(espacio);
+                this.sprite.toFront();
             },coloracion, movimientoX, movimientoY);
 
             animacionMovimiento.getKeyFrames().add(frame);

@@ -22,13 +22,13 @@ public class BotoneraDeEjecucion extends HBox {
         Button botonEjecutar = new Button("Ejecutar");
         botonEjecutar.setOnAction(new BotonEjecutarEventHandler(armadorAlgoritmo, panelDibujo));
 
-        Button botonLimpiar = new Button("Limpiar");
-        botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
-
         Button botonGuardar = new Button("Guardar");
 
         BotonEliminar botonEliminar = new BotonEliminar("Eliminar");
         panelArmado.asociarBotonEliminar(botonEliminar);
+
+        Button botonLimpiar = new Button("Limpiar");
+        botonLimpiar.setOnAction(new BotonLimpiarEventHandler(armadorAlgoritmo, panelArmado));
 
         botonGuardar.setOnAction(new BotonGuardarEventHandler(stage,armadorAlgoritmo,menuAlgortimos,panelArmado));
 

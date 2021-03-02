@@ -13,7 +13,8 @@ public class BotonEliminar extends Button {
         this.deshabilitar();
     }
 
-    private void deshabilitar() {
+    public void deshabilitar() {
+        this.botonBloqueABorrar = null;
         this.setVisible(false);
         this.setDisable(true);
     }
@@ -43,7 +44,6 @@ public class BotonEliminar extends Button {
         bloquePadre.eliminarBloque(bloqueABorrar);
         botonBloqueABorrar.eliminarHijos();
         this.botonBloqueABorrar.eliminarSelf();
-        this.botonBloqueABorrar = null;
         this.deshabilitar();
     }
 
