@@ -2,19 +2,13 @@ package edu.fiuba.algo3.Vista;
 
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.TableroAlgoritmo;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ContenedorPrincipal extends BorderPane {
 
     private Stage root;
-    private BotoneraDeEjecucion botoneraDeEjecucion;
-    private BotoneraDeAcciones botoneraDeAcciones;
     private PanelDibujo panelDibujo;
     private PanelArmado panelArmado;
     private MenuAlgoritmoPersonalizados menuAlgoritmoPersonalizados;
@@ -25,16 +19,15 @@ public class ContenedorPrincipal extends BorderPane {
     {
         this.setMinSize(1000,500);
         this.setMaxSize(1250,720);
-        root = stage;
-        this.setStyle("-fx-background-color: #4e2e78;");
+        this.root = stage;
+        this.setStyle("-fx-background-color: #6C548C;");
         this.personaje = personaje;
         this.armadorAlgoritmo = armadorAlgoritmo;
         menuAlgoritmoPersonalizados = this.crearMenuAlgoritmoPersonalizados();
         panelDibujo = this.crearPanelDibujo();
         panelArmado = this.crearPanelArmado();
-        botoneraDeEjecucion = this.crearBotoneraEjecucion();
-        botoneraDeAcciones = this.crearBotoneraAccion();
-
+        this.crearBotoneraEjecucion();
+        this.crearBotoneraAccion();
     }
 
 
@@ -59,16 +52,14 @@ public class ContenedorPrincipal extends BorderPane {
         return panel;
     }
 
-    private BotoneraDeEjecucion crearBotoneraEjecucion() {
+    private void crearBotoneraEjecucion() {
         BotoneraDeEjecucion botonera = new BotoneraDeEjecucion(root, armadorAlgoritmo, panelArmado, panelDibujo,menuAlgoritmoPersonalizados);
         this.setTop(botonera);
-        return botonera;
     }
 
-    private BotoneraDeAcciones crearBotoneraAccion(){
-        BotoneraDeAcciones botonera = new BotoneraDeAcciones(root);
+    private void crearBotoneraAccion(){
+        BotoneraDeAcciones botonera = new BotoneraDeAcciones();
         this.setBottom(botonera);
-        return botonera;
     }
 
 

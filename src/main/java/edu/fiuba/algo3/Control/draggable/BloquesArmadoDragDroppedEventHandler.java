@@ -25,15 +25,14 @@ public class BloquesArmadoDragDroppedEventHandler implements EventHandler<DragEv
         this.armadorAlgoritmo = armadorAlgoritmo;
         this.botonEliminar = botonEliminar;
     }
+
     @Override
     public void handle(DragEvent dragEvent) {
         Dragboard dragboard = dragEvent.getDragboard();
-        if (dragboard.hasString()) {
-            dragEvent.setDropCompleted(true);
-        } else {
-            dragEvent.setDropCompleted(false);
-        }
+        if (dragboard.hasString()) dragEvent.setDropCompleted(true);
+        else dragEvent.setDropCompleted(false);
         String simbolo = dragboard.getString();
+
         IBloque bloque = IdentificarBloque.devolverBloque(simbolo, this.armadorAlgoritmo);
         BotonBloqueArmado boton = new BotonBloqueArmado(simbolo, this.panelPrincipal, this.botonEliminar, this.bloquePadre, bloque, this.panelAsociado);
         bloquePadre.agregarAccion(bloque);
@@ -44,6 +43,7 @@ public class BloquesArmadoDragDroppedEventHandler implements EventHandler<DragEv
             if(simbolo.equals("⟳")) {
                 s="Repetir";
             }
+
             ITabArmadoBloques tab = new TabBloquesComplejos(s, this.panelPrincipal, bloque, this.armadorAlgoritmo, this.botonEliminar);
             boton.tratarComoBloqueComplejo(tab);
             this.panelPrincipal.getSelectionModel().select((Tab) tab);

@@ -6,4 +6,8 @@ public class TabBloquesSimples extends Tab implements ITabArmadoBloques  {
     @Override
     public void eliminarHijos() {
     }
+
+    @Override
+    public void agregarLabel(String s) {
+    }
 }

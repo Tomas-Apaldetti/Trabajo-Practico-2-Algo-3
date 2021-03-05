@@ -59,19 +59,16 @@ public class IdentificarBloque {
         contenedorNombre.setSpacing(15);
         contenedorNombre.setPadding(new Insets(10));
         contenedorNombre.setAlignment(Pos.CENTER);
-        contenedorNombre.setStyle("-fx-background-color: #4e2e78;"+
-                " -fx-border-color: black;" +
-                " -fx-border-width: 2px;" +
-                " -fx-border-radius: 80;" +
-                " -fx-background-radius: 80;");
+        contenedorNombre.setStyle("-fx-background-color: #6C548C;"+
+                " -fx-border-color: #121212;" +
+                " -fx-border-insets: -1; "+
+                " -fx-border-width: 7;");
 
         ChoiceBox<Integer> choiceBox = new ChoiceBox<>();
-        choiceBox.setStyle("-fx-background-color: #896bab;" +
-                " -fx-border-color: white;" +
-                " -fx-border-width: 2px;" +
-                " -fx-border-radius: 80;" +
-                " -fx-background-radius: 80;" +
-                " -fx-text-fill: black;" +
+        choiceBox.setStyle("-fx-background-color: #6C548C;" +
+                " -fx-border-color: #121212;" +
+                " -fx-border-width: 3;" +
+                " -fx-text-fill: #121212;" +
                 " -fx-font-weight: bold;");
         choiceBox.setValue(2);
         choiceBox.getItems().add(2);
@@ -81,12 +78,13 @@ public class IdentificarBloque {
 
 
         Button botonAceptar = new Button("ACEPTAR");
-        botonAceptar.setStyle("-fx-background-color: #896bab;" +
-                " -fx-border-color: white;" +
-                " -fx-border-width: 2px;" +
+        botonAceptar.setStyle("-fx-background-color: #C5C5C5;" +
+                " -fx-border-color: #121212;" +
+                " -fx-border-insets: -1; "+
+                " -fx-border-width: 2;" +
                 " -fx-border-radius: 80;" +
                 " -fx-background-radius: 80;" +
-                " -fx-text-fill: white;" +
+                " -fx-text-fill: #121212;" +
                 " -fx-font-weight: bold;");
 
         contenedorNombre.getChildren().addAll(choiceBox,botonAceptar);

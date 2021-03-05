@@ -23,6 +23,7 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
     private final Stage primaryStage;
     private final MenuAlgoritmoPersonalizados menuAlgoritmos;
     private final PanelArmado panelArmado;
+    private final int LIMITE = 17;
 
     public BotonGuardarEventHandler(Stage stage, TableroAlgoritmo armadorAlgoritmo, MenuAlgoritmoPersonalizados menuAlgoritmos, PanelArmado panelArmado) {
         this.primaryStage = stage;
@@ -33,10 +34,15 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.pedirNombre();
+        String nombre = this.pedirNombre();
+        if(nombre.length() > LIMITE)
+        {
+            nombre = nombre.substring(0, LIMITE);
+        }
+        this.guardarBotonAlgoritmoPersonalizado(nombre);
     }
 
-    private void pedirNombre() {
+    private String pedirNombre() {
         Stage dialogoStage = new Stage();
         dialogoStage.setHeight(150);
         dialogoStage.setWidth(450);
@@ -50,38 +56,41 @@ public class BotonGuardarEventHandler implements EventHandler<ActionEvent> {
         contenedorNombre.setSpacing(15);
         contenedorNombre.setPadding(new Insets(10));
         contenedorNombre.setAlignment(Pos.CENTER);
-        contenedorNombre.setStyle("-fx-background-color: #4e2e78;");
+        contenedorNombre.setStyle("-fx-background-color: #6C548C;"+
+                " -fx-border-color: #121212;" +
+                " -fx-border-insets: -1; "+
+                " -fx-border-width: 7;");
 
         TextField nombreTextField = new TextField();
-        nombreTextField.setStyle("-fx-background-color: #896bab;" +
-                " -fx-border-color: white;" +
-                " -fx-border-width: 2px;" +
-                " -fx-border-radius: 80;" +
-                " -fx-background-radius: 80;" +
-                " -fx-text-fill: black;" +
+        nombreTextField.setStyle("-fx-background-color: #6C548C;" +
+                " -fx-border-color: #121212;" +
+                " -fx-border-width: 3;" +
+                " -fx-text-fill: #121212;" +
                 " -fx-font-weight: bold;");
 
         Button botonAceptar = new Button("ACEPTAR");
-        botonAceptar.setStyle("-fx-background-color: #896bab;" +
-                " -fx-border-color: white;" +
-                " -fx-border-width: 2px;" +
+        botonAceptar.setStyle("-fx-background-color: #C5C5C5;" +
+                " -fx-border-color: #121212;" +
+                " -fx-border-insets: -1; "+
+                " -fx-border-width: 2;" +
                 " -fx-border-radius: 80;" +
                 " -fx-background-radius: 80;" +
-                " -fx-text-fill: white;" +
+                " -fx-text-fill: #121212;" +
                 " -fx-font-weight: bold;");
 
         contenedorNombre.getChildren().addAll(nombreTextField,botonAceptar);
         dialogoStage.setScene(new Scene(contenedorNombre,100,450));
-        botonAceptar.setOnAction(new BotonNombreAlgoritmoEventHandler(dialogoStage,nombreTextField,this));
-        dialogoStage.show();
+        botonAceptar.setOnAction(e->dialogoStage.close());
+        dialogoStage.showAndWait();
+        return nombreTextField.getText();
     }
 
     public void guardarBotonAlgoritmoPersonalizado(String nombre)
     {
         try {
-        armadorAlgoritmo.guardarAlgoritmo(nombre);
-        this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
-        panelArmado.limpiarTablero();
+            armadorAlgoritmo.guardarAlgoritmo(nombre);
+            this.menuAlgoritmos.agregarBotonAlgoritmoPersonalizado(nombre);
+            panelArmado.limpiarTablero();
         }
         catch (IllegalArgumentException ElNombreDeUnAlgoritoNoPuedeEstarVacioExcepcion){
             this.mostrarAlerta("Por favor ingrese un nombre para guardar el algoritmo");

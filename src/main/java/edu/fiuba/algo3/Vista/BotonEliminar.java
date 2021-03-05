@@ -42,7 +42,7 @@ public class BotonEliminar extends Button {
         IBloque bloquePadre = this.botonBloqueABorrar.obtenerBloquePadre();
         IBloque bloqueABorrar = this.botonBloqueABorrar.obtenerBloque();
         bloquePadre.eliminarBloque(bloqueABorrar);
-        botonBloqueABorrar.eliminarHijos();
+        this.botonBloqueABorrar.eliminarHijos();
         this.botonBloqueABorrar.eliminarSelf();
         this.deshabilitar();
     }
